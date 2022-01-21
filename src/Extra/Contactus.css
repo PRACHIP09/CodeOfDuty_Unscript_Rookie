@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto");
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+.heading {
+  color: #3cf7fb;
+}
+
+.inputFields input {
+  padding: 10px;
+  width: 80%;
+  border: 3px #3cf7fb solid;
+  border-radius: 20px;
+  background-color: #000324;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  outline: none;
+  font-size: 15px;
+}
+
+.inputFields label {
+  color: white;
+  font-family: 'Merriweather', serif;
+  display: block;
+  text-align: left;
+  padding: 13px;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+#message {
+  width: 90%;
+  height: 1rem;
+  padding-bottom: 150px;
+
+}
+.contact{
+  padding: 20px;
+}
+.contact p ,.contact h2{
+  color:white;
+}
+.contact p{
+  font-family: "Roboto", sans-serif;
+
+}
+.detail{
+  padding: 0 40px;
+  background-color: #000324;
+}
+.map{
+  border: 0;
+  padding-top: 10px;
+  width: 87%;
+  height: 70%;
+}
+
+@media (max-width:900px){
+  .inputFields label{
+    text-align: center;
+  }
+}
+@media (max-width:600px) {
+  .inputFields label{
+    text-align: center;
+    
+  }
+  .inputFields input{
+    width: 90%;
+    /* position: relative;
+    left:-40px; */
+  }
+  #message{
+    width: 90%;
+
+  }
+  .map{
+   /* width: 134%; */
+   /* height: 300px; */
+   padding-left: 50px;
+  }
+}
+
+@media (max-width:550px) {
+  .map{
+    /* width: 134%; */
+    /* height: 300px; */
+    padding-left: 20px;
+   }
+}

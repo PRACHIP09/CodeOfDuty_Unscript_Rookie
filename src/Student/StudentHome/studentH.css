@@ -1,0 +1,239 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@200&family=Libre+Baskerville&family=Mochiy+Pop+P+One&display=swap");
+
+/* hero */
+.heroHead {
+  font-family: "Mochiy Pop P One", sans-serif;
+  font-size: 2.5rem;
+  padding: 20px 20%;
+}
+
+.heroFeature,
+.heroFeature2 {
+  padding: 0% 1%;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.heroFeature {
+  border-right: 2px solid black;
+}
+
+.LinkTag {
+  text-decoration: none;
+}
+
+.heroImage {
+  width: 90%;
+}
+
+/* features */
+.featureImage {
+  width: 87%;
+  z-index: 3;
+}
+
+.pin {
+  width: 50px;
+  position: relative;
+  top: -250px;
+  left: 70px;
+}
+
+.graph {
+  width: 130px;
+  position: relative;
+  top: -60px;
+  left: 200px;
+}
+
+.tabs {
+  position: relative;
+  top: -12px;
+}
+/* .dots{
+    width: 70px;
+    transform: rotate(-103deg) translateY(50px) translateX(-20px);
+    z-index: 1;
+} */
+
+.featureHead {
+  font-family: "Mochiy Pop P One", sans-serif;
+  font-size: 1.5rem;
+  text-align: left;
+}
+.featureData {
+  font-family: "Ubuntu", sans-serif;
+  color: rgba(0, 0, 0, 0.692);
+  text-align: left;
+}
+.feature {
+  padding: 10px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+}
+
+/* publicity */
+
+.pubNumber {
+  color: orange;
+  font-family: "Mochiy Pop P One", sans-serif;
+  font-size: 2rem;
+}
+
+.pubData {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  position: relative;
+  top: -5px;
+}
+
+.pubdummy {
+  font-size: 0.7rem;
+  color: rgb(37, 34, 34);
+  font-family: "Archivo", sans-serif;
+  font-weight: 600;
+}
+.fullPub {
+  text-align: left;
+  padding: 3%;
+  border-left: 2px orange solid;
+}
+
+/* category */
+
+.flip-card {
+  background-color: transparent;
+  width: 200px;
+  height: 200px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  /* background-color: #abe9cd;
+  background-image: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%); */
+  background-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 74%);
+
+  border: 20px solid #ffffff;
+  box-shadow: 4px 4px 20px rgba(50, 106, 249, 0.2);
+  border-radius: 10px;
+}
+
+.flip-card-back {
+  /* width: 100%;
+    height: 100%; */
+  border: 20px solid transparent;
+  border-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 74%);
+  border-image-slice: 1;
+  transform: rotateY(180deg);
+  box-shadow: 4px 4px 20px rgba(50, 106, 249, 0.2);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  margin-left: -38px;
+}
+
+
+.domainHeading {
+  font-family: "Mochiy Pop P One", sans-serif;
+  color: rgb(19, 18, 18);
+  font-size: 2rem;
+}
+
+/* trending */
+.abtgrid {
+  padding: 40px;
+}
+
+.abtheading {
+  font-family: Righteous;
+  font-style: normal;
+  font-family: "Libre Baskerville", serif;
+  text-align: left;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 45px;
+  color: #001019;
+  font-weight: 700;
+  padding-top: 5%;
+  padding-left: 5%;
+  padding-right: 20%;
+}
+
+.abtcontent {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  text-align: left;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 18px;
+  line-height: 150%;
+  color: #001019;
+  padding-top: 25px;
+  padding-left: 5%;
+  padding-right: 20%;
+}
+
+.abtimg {
+  border: 40px solid #ffffff;
+  filter: drop-shadow(4px 4px 20px rgba(55, 112, 255, 0.12));
+}
+
+.splide__slide img {
+  height: 300px;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .splide__slide img {
+    height: 100%;
+    width: 100%;
+  }
+
+  .splide__slide {
+    height: 183px;
+  }
+
+  .abtgrid {
+    padding: 10px;
+  }
+  .abtheading {
+    font-size: 30px;
+    padding-right: 5%;
+  }
+
+  .abtcontent {
+    font-size: 15px;
+    padding-right: 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  .abtheading {
+    padding-right: 7%;
+  }
+
+  .abtcontent {
+    padding-right: 5%;
+  }
+}
