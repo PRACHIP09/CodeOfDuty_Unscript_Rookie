@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@200&family=Libre+Baskerville&family=Mochiy+Pop+P+One&display=swap");
+
+.course{
+    font-family: "Mochiy Pop P One", sans-serif;
+}
+.heading{
+    
+  font-family: "Ubuntu", sans-serif;
+}
+.admin{
+    font-family: "Mochiy Pop P One", sans-serif;
+}
+.desp1{
+    font-family: "Ubuntu", sans-serif;
+    font-weight: "500";
+    font-size: 1.45rem;
+}
+.desp{
+    font-family: "Ubuntu", sans-serif;
+    font-weight: "500";
+    font-size: 1.5rem;
+}

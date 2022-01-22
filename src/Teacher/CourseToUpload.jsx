@@ -3,7 +3,11 @@ import { Grid ,
     TextField ,
     InputAdornment,
     FormHelperText,
-    Button, } from '@mui/material';
+    Button,
+    Drawer,
+    MenuItem,
+    FormControl,
+    Select } from '@mui/material';
 import PermContactCalendarIcon from "@mui/icons-material/PermContactCalendar";
 import DescriptionIcon from '@mui/icons-material/Description';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
@@ -12,15 +16,25 @@ import EditIcon from '@mui/icons-material/Edit';
 import BeenhereIcon from '@mui/icons-material/Beenhere';
 import Validation from './TeacherValidation';
 import {useHistory} from 'react-router-dom';
-
-const CourseToUpload = () => {
+import close from '../Images/close.png';
+const CourseToUpload = ({id}) => {
     const history = useHistory();
+    const [open, setOpen] = React.useState(false);
+    const [category,setCategory] = useState("");
+    const [level , setLevel] = useState("");
+    const [notes , setNotes] = useState([]);
+    const handleDrawerOpen = () => {
+    setOpen(true);
+    };
+    const handleDrawerClose = () => {
+    setOpen(false);
+    };
+    
     const [values, setValues] = useState({
         name: "",
         price: "",
         videos: "",
         description: "",
-        level: "",
         notes: "",
       });
     const [errors, setErrors] = useState({});
@@ -32,14 +46,13 @@ const CourseToUpload = () => {
       });
       console.log(values);
     };
-
-
+    
   return (
   <div style={{paddingLeft:"6vh" ,paddingTop:"2vh" , paddingRight:"1vh"}}>
       <Grid spacing={3}>
                 
                 <div style={{padding:"0 0 20px 0" , fontSize:"1.5rem" , textAlign:"left" , color:"#141b37"}}>
-                Upload New Courses
+                Upload New Courses {id}
                 </div>
                 {/* for name*/}
                 <Grid container spacing={3} style={{paddingBottom:"2vh"}}>
@@ -137,8 +150,105 @@ const CourseToUpload = () => {
                   )}
                   </Grid> 
                 </Grid>
-                {/*for video*/}
+                {/*for level*/}
                 <Grid container spacing={3} style={{paddingBottom:"2vh"}}>
+                   <Grid item md={8} sm={8} xs={8}>
+                   <TextField
+                  fullWidth
+                  select
+                  label="Course Level"
+                  value={level}
+                  onChange={(e) => setLevel(e.target.value)}
+                  >       
+                    <MenuItem key="Beginner" value="Beginner">
+                    Beginner
+                    </MenuItem>
+                    <MenuItem key="Intermediate" value="Intermediate">
+                    Intermediate 
+                    </MenuItem>
+                    <MenuItem key="Advanced" value="Advanced">
+                    Advanced 
+                    </MenuItem>
+                    </TextField>
+                  </Grid> 
+                  <Grid item md={8} sm={8} xs={8}>
+                  <TextField
+                  fullWidth
+                  select
+                  label="Course Category"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  >       
+                    <MenuItem key="Mechanical" value="Mechanical">
+                    Mechanical 
+                    </MenuItem>
+                    <MenuItem key="Computer" value="Computer">
+                    Computer 
+                    </MenuItem>
+                    <MenuItem key="Electronics And Telecommunication" value="Electronics And Telecommunication">
+                    Electronics And Telecommunication 
+                    </MenuItem>
+                    <MenuItem key="Information Technology" value="Information Technology">
+                    Information Technology 
+                    </MenuItem>
+                    <MenuItem key="Data Science" value="Data Science'">
+                    Data Science' 
+                    </MenuItem>
+                    <MenuItem key="Artificial Intelligence And Machine Learning" value="Artificial Intelligence And Machine Learning">
+                    Artificial Intelligence And Machine Learning
+                    </MenuItem>
+                    <MenuItem key="Artificial Intelligence (AI) And Data Science" value="Artificial Intelligence And Data Science">
+                    Artificial Intelligence And Data Science
+                    </MenuItem>
+                    <MenuItem key="IOT And Cyber Security With Block Chain Technology" value="IOT And Cyber Security With Block Chain Technology">
+                    IOT And Cyber Security With Block Chain Technology 
+                    </MenuItem><MenuItem key="Chemical" value="Chemical">
+                    Chemical 
+                    </MenuItem>
+                    <MenuItem key="Electronics" value="Electronics">
+                    Electronics 
+                    </MenuItem>
+                    <MenuItem key="Production" value="Production">
+                    Production 
+                    </MenuItem>
+                    <MenuItem key="Biomedical" value="Biomedical">
+                    Biomedical 
+                    </MenuItem>
+                  </TextField>
+                  </Grid>
+                </Grid>
+                
+                <Button
+                    style={{ marginRight:"20vh", textAlign:"center" , width:"40vh" , fontSize:"1rem" ,marginBottom:"5vh"}}
+                    variant="contained"
+                    onClick={() => {
+                      setErrors(Validation(values));
+                    }}
+                    onClick={handleDrawerOpen}
+                  >Add Videos and Link</Button>
+                
+            </Grid>
+            <Drawer
+        sx={{
+          width: 500,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: 500,
+            boxSizing: 'border-box',
+          },
+        }}
+        variant="persistent"
+        anchor="right"
+        open={open}
+      >
+       <img src={close} alt="close" onClick={handleDrawerClose} style={{height:"5vh", width:"5vh" , cursor:"pointer" , marginLeft:"80%" , marginTop:"2vh"}}/>
+       <div style={{paddingLeft:"6vh" ,paddingTop:"2vh" , paddingRight:"1vh"}}>
+        <Grid spacing={3}>
+        <div style={{padding:"0 0 5vh 0" , fontSize:"1.5rem" , textAlign:"left" , color:"#141b37"}}>
+        Upload New Videos and Notes
+        </div>
+       {/*for video*/}
+       <Grid container spacing={3} style={{paddingBottom:"2vh"}}>
                    <Grid item md={8} sm={8} xs={8}>
                    <TextField
                     id="outlined-basic"
@@ -169,50 +279,16 @@ const CourseToUpload = () => {
                   )}
                   </Grid> 
                 </Grid>
-                {/*for level*/}
-                <Grid container spacing={3} style={{paddingBottom:"2vh"}}>
-                   <Grid item md={8} sm={8} xs={8}>
-                   <TextField
-                    id="outlined-basic"
-                    label="Course Level"
-                    color="primary"
-                    type="text"
-                    error={errors.level}
-                    name="level"
-                    variant="outlined"
-                    value={values.level}
-                    fullWidth
-                    autoComplete='off'
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <BeenhereIcon color="primary" />
-                        </InputAdornment>
-                      ),
-                    }}
-                    onChange={handleChanges}
-                  />
-                  {errors.level ? (
-                    <FormHelperText error>{errors.level}</FormHelperText>
-                  ) : (
-                    <FormHelperText style={{ visibility: "hidden" }}>
-                      ..
-                    </FormHelperText>
-                  )}
-                  </Grid> 
-                </Grid>
                 {/*for notes*/}
                 <Grid container spacing={3} style={{paddingBottom:"2vh"}}>
                    <Grid item md={8} sm={8} xs={8}>
                    <TextField
                     id="outlined-basic"
-                    label="Notes"
                     color="primary"
-                    type="text"
-                    error={errors.notes}
+                    type="file"
                     name="notes"
                     variant="outlined"
-                    value={values.notes}
+                    value={notes}
                     fullWidth
                     autoComplete='off'
                     InputProps={{
@@ -222,15 +298,8 @@ const CourseToUpload = () => {
                         </InputAdornment>
                       ),
                     }}
-                    onChange={handleChanges}
+                    onChange={(e) => setNotes(e.target.files[0])}
                   />
-                 {errors.notes ? (
-                    <FormHelperText error>{errors.notes}</FormHelperText>
-                  ) : (
-                    <FormHelperText style={{ visibility: "hidden" }}>
-                      ..
-                    </FormHelperText>
-                  )}
                   </Grid> 
                 </Grid>
                 <Button
@@ -239,8 +308,11 @@ const CourseToUpload = () => {
                     onClick={() => {
                       setErrors(Validation(values));
                     }}
-                  >Add</Button>
-            </Grid>
+
+                  >Upload the Course</Button>
+                </Grid>
+                </div>
+      </Drawer>
   </div>
   );
 };

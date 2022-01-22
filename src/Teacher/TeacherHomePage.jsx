@@ -1,12 +1,12 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { Grid ,
     Card,
     Typography,
     CardMedia,
     CardContent,
-    useTheme,
     Drawer,
-    Button } from '@mui/material';
+    Button, 
+    Tooltip} from '@mui/material';
 import doubts from '../Images/doubts.png';
 import feedback from '../Images/feedback.png';
 import PeopleIcon from '@mui/icons-material/People';
@@ -16,11 +16,20 @@ import add from '../Images/add.png';
 import close from '../Images/close.png'
 import AlreadyUploaded from './AlreadyUploaded';
 import Doubts from './Doubts';
-
+import user from '../Images/user.png';
+import Profile from './Profile';
+import { motion } from "framer-motion";
+import './teacher.css';
 const TeacherHomePage = () => {
     const [open, setOpen] = React.useState(false);
     const [openqa, setOpenqa] = React.useState(false);
     const [openfdbck , setOpenfdbck] = React.useState(false);
+    const [openprf , setOpenPrf] = React.useState(false);
+    
+    const [load,setLoad] = useState([]);
+    // useEffect(() => {
+    //   loadList();
+    // }, []);
     const handleDrawerOpen = () => {
     setOpen(true);
     };
@@ -39,18 +48,51 @@ const TeacherHomePage = () => {
     const handleDrawerCloseFdbck = () => {
     setOpenfdbck(false);
     };
+    const handleDrawerOpenPrf = () => {
+    setOpenPrf(true);
+    };
+    const handleDrawerClosePrf = () => {
+    setOpenPrf(false);
+    };
+/*const loadList = async () => {
+      const result = await axios.get(
+        `http://communitybuyingbackend.pythonanywhere.com//main/product/0/`,
+        {
+          headers: {
+            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQwMjczNjYzLCJpYXQiOjE2NDAwMDc3NjQsImp0aSI6ImFlMDRjYTc3N2Y1YjQyZDZhN2Q5NTA5NWJlMzJkYTZlIiwidXNlcl9pZCI6Mn0.Kk6CCX4aFsYzvSr6YVCTLbCwGypGTk46nFIHT5b4prE`,
+          },
+        }
+      );
+      setLoad(result.data);
+    };
+*/
   return (
   <div style={{padding:"6vh"}} >
-        <div style={{alignItems:"left" , marginLeft:"90%"}} >
-        <img src={add} alt="add" onClick={handleDrawerOpen} style={{height:"6vh", width:"6vh" , cursor:"pointer"}}/>
-        </div>
-        <div style={{padding:"3vh" , fontWeight:"700" , fontSize:"1.7rem" , color:"#00ACEA" , alignItems:"Left"}}>
+        <Grid container spacing={3} >
+        <Grid md={10} xs={10}></Grid>
+        <Grid md={2} xs={2}
+        component={motion.div}
+        whileHover={{
+        scale: 1.08,
+        textShadow: "0 0 8px rgb(255,255,255)",
+        transition: { duration: 0.3 },
+        }}>
+        <img src={add} alt="add" onClick={handleDrawerOpen} style={{height:"6vh", width:"6vh" , cursor:"pointer" }}/>
+        </Grid>
+        </Grid>
+        <div className="heading" style={{padding:"3vh" , fontWeight:"700" , fontSize:"1.7rem" , color:"#00ACEA" , alignItems:"Left"}}>
         Course Uploaded
         </div>
         <Grid container spacing={3} >
         <Grid item md={3} xs={12} sm={6}>
-            <Card >
-            <Typography gutterBottom variant="h5" component="div" style={{marginLeft:"20px"}}>AI-ML</Typography>
+            <Card
+            component={motion.div}
+            whileHover={{
+            scale: 1.08,
+            textShadow: "0 0 8px rgb(255,255,255)",
+            transition: { duration: 0.3 },
+            }}>
+            
             <CardMedia
               component="img"
               alt="green iguana"
@@ -58,6 +100,9 @@ const TeacherHomePage = () => {
               src={blog}
               style={{marginBottom:"3vh"}}
             />
+            <Typography gutterBottom variant="h5" component="div" style={{marginBottom:"2vh" , color:"blue" , fontWeight:"600"}}>AI-ML</Typography>
+            <Typography gutterBottom  component="div" style={{padding:"2vh"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Typography>
+            <hr/><br/>
             <CardContent>
                 <Grid container spacing={3}>
                     <Grid items md={6} xs={6}>
@@ -72,7 +117,6 @@ const TeacherHomePage = () => {
                 </Grid>
             </CardContent>
             </Card>
-
         </Grid>
         </Grid>
         <Drawer
@@ -89,7 +133,8 @@ const TeacherHomePage = () => {
         open={open}
       >
        <img src={close} alt="close" onClick={handleDrawerClose} style={{height:"5vh", width:"5vh" , cursor:"pointer" , marginLeft:"80%" , marginTop:"2vh"}}/>
-       <CourseToUpload/> 
+       <CourseToUpload id="8"/>
+       {/* <CourseToUpload id={user.id}/>  */}
       </Drawer>
       <Drawer
         sx={{

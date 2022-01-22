@@ -1,6 +1,6 @@
 import React from 'react';
 import {Grid} from '@mui/material'
-const Doubts = () => {
+const Doubts = ({id}) => {
   return (
   <div>
       <div style={{fontSize:"1.2rem" , fontWeight:"600",marginTop:"5vh"}}>Question and Answer</div>
