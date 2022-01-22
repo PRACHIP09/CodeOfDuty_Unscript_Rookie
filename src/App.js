@@ -14,19 +14,22 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-          <Route path="/" exact>
+          <Route path="/login" exact>
             <Login />
           </Route>
           <Route path="/signin">
             <Signup />
           </Route>
-          <Route path="/homeStudent">
+          <Route path="/profile">
+            
+          </Route>
+          <Route path="/home">
             <Navbar />
             <StudentHome />
             {/* <ContactUs /> */}
             {/* <Footer /> */}
           </Route>
-          <Route path="/studentCourses">
+          <Route path="/courses">
             <Navbar />
             <CourseLayout />
           </Route>

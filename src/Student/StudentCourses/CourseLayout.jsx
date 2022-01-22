@@ -8,7 +8,7 @@ const CourseLayout = () => {
   return (
     <div>
       <CategoryTable />
-      <Grid container spacing={3} style={{ padding: "1% 4%" }}>
+      <Grid container spacing={3} style={{padding:'1% 4%'}}>
         <Grid item sm={4}>
           <Paper elevation={2} className="courseBox">
             <img
@@ -22,11 +22,17 @@ const CourseLayout = () => {
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500
             </p>
-            <Tooltip arrow title="Have one to one conversations with our teachers">
-              <Button style={{ float: "left" }}>
-                <QuestionAnswerIcon />
-              </Button>
-            </Tooltip>
+            <span
+              style={{
+                float: "left",
+                margin: "5px",
+                color: "green",
+                fontSize: "1.3rem",
+              }}
+            >
+              &#8377; 100
+            </span>
+
             {!enroll ? (
               <Button
                 style={{ float: "right", margin: "5px", borderRadius: "20px" }}
@@ -45,6 +51,14 @@ const CourseLayout = () => {
                 Expel
               </Button>
             )}
+            <Tooltip
+              arrow
+              title="Have one to one conversations with our teachers"
+            >
+              <Button>
+                <QuestionAnswerIcon />
+              </Button>
+            </Tooltip>
             <br />
             <br />
             <Button style={{ fontSize: ".7rem" }}>
