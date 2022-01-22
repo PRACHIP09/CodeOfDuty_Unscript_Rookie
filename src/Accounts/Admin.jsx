@@ -18,11 +18,13 @@ import profile from '../Images/profile.png';
 import Swal from 'sweetalert2';
 import {makeStyles} from '@mui/styles';
 import { motion } from 'framer-motion';
+import '../Teacher/teacher.css';
 const useStyles = makeStyles({
   root:{
     "& .MuiCard-root ":{
       "&:nth-child(n)":{
-        "backgroundColor":"#BAE5F4",
+        "backgroundColor":"#DFECEC",
+        "boxShadow":"none",
       }
       
     }
@@ -68,14 +70,16 @@ const Admin = () => {
     }
 
   return (
-    <div  style={{backgroundImage: `url(https://wallpaperaccess.com/full/5634291.png)`  , backgroundSize: "cover" , height:"100%"}}>
-        <div style={{padding:"3vh" , fontWeight:"700" , fontSize:"2rem" , color:"#002652"}}>
+    <div  style={{backgroundColor:"#ebbe9b",backgroundImage : "linear-gradient(315deg, #5de6de 0%, #b58ecc 74%)", backgroundSize: "cover" , height:"100%"}}>
+        <div style={{padding:"3vh" , fontWeight:"700" , fontSize:"2rem" , color:"#002652"}} className='admin'>
         A d m i n
         </div>
-    <Grid container spacing={3}>
+    <Grid container spacing={3} className={classes.root}>
     
-        <Grid item xs={12} md={6}>
-        <Card style={{height:"20vh" , margin:"5vh"}} 
+        <Grid item xs={12} md={6} >
+        <Card style={{height:"20vh" , margin:"5vh"}}
+        
+        
         component={motion.div}
         whileHover={{
         scale: 1.08,
@@ -86,7 +90,8 @@ const Admin = () => {
                 <Grid item xs={6} md={6}>
                 <img src={teacher} alt={teacher} style={{height:"16vh", width:"16vh" , padding:"2vh"}} />
                 </Grid>
-                <Grid item xs={6} md={6}>
+                <Grid item xs={6} md={6} className='desp1'style={{paddingTop:"7vh", fontWeight:"600" , paddingRight:"2vh"}}>
+                Online learning is not the Next Big thing ,<br/> It is Now the Big thing
                 </Grid>
             </Grid> 
         </Card>
@@ -103,7 +108,8 @@ const Admin = () => {
                 <Grid item xs={6} md={6}>
                 <img src={student} alt={student} style={{height:"16vh", width:"16vh" , padding:"2vh"}} />
                 </Grid>
-                <Grid item xs={6} md={6}>
+                <Grid item xs={6} md={6} className='desp'style={{paddingTop:"7vh", fontWeight:"600" , paddingRight:"2vh"}}>
+                  Every Time we don't know something ,<br/>We can learn
                 </Grid>
             </Grid>
         </Card>

@@ -1,4 +1,11 @@
-import { Grid, Paper, Button, Tooltip } from "@mui/material";
+import { Grid, 
+  Paper, 
+  Button, 
+  Tooltip, 
+  Drawer , 
+  TextField,
+InputAdornment,
+} from "@mui/material";
 import React, { useState } from "react";
 import CategoryTable from "./CategoryTable";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
@@ -6,23 +13,35 @@ import Rating from "@mui/material/Rating";
 import SignalCellular4BarOutlinedIcon from "@mui/icons-material/SignalCellular4BarOutlined";
 import SignalCellular1BarOutlinedIcon from "@mui/icons-material/SignalCellular1BarOutlined";
 import SignalCellular3BarOutlinedIcon from "@mui/icons-material/SignalCellular3BarOutlined";
+import StarIcon from '@mui/icons-material/Star';
+import close from '../../Images/close.png';
 import "./course.css";
 var difficult = "hard";
 const CourseLayout = () => {
   const [enroll, setEnroll] = useState(false);
   const [open, setOpen] = React.useState(false);
-
+  const [openfdbck, setOpenfdbck] = React.useState(false);
   const handleClick = () => {
     setOpen(true);
   };
-
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
+    };
+  }
+    const handleDrawerOpenFdbck = () => {
+      setOpenfdbck(true);
+      };
+    const handleDrawerCloseFdbck = () => {
+      setOpenfdbck(false);
+    };
+    const [feedback, setFeedback] = useState("");
+    const [stars, setStars] = useState(3);
+    const [hover, setHover] = React.useState(-1);
+    const submit = () =>{
+      console.log(feedback,stars);
     }
 
-    setOpen(false);
-  };
   return (
     <div>
       <CategoryTable />
@@ -107,7 +126,7 @@ const CourseLayout = () => {
                 <QuestionAnswerIcon />
               </Button>
             </Tooltip>
-            <Button style={{ fontSize: ".7rem" }}>
+            <Button style={{ fontSize: ".7rem" }} onClick={handleDrawerOpenFdbck}>
               Give your valuable Feedback
             </Button>
           </Paper>
@@ -115,6 +134,75 @@ const CourseLayout = () => {
         <Grid item sm={4}></Grid>
         <Grid item sm={4}></Grid>
       </Grid>
+      <Drawer
+        sx={{
+          width: 500,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: 500,
+            boxSizing: 'border-box',
+          },
+        }}
+        variant="persistent"
+        anchor="right"
+        open={openfdbck}
+      >
+       <img src={close} alt="close" onClick={handleDrawerCloseFdbck} style={{height:"5vh", width:"5vh" , cursor:"pointer" , marginLeft:"80%" , marginTop:"2vh"}}/>
+       <div style={{paddingLeft:"6vh" ,paddingTop:"2vh" , paddingRight:"1vh"}}>
+        <Grid spacing={3}>
+        <div style={{padding:"0 0 5vh 0" , fontSize:"1.5rem" , textAlign:"left" , color:"#141b37"}}>
+        Feedback
+        </div>
+       {/*for feedback*/}
+       <Grid container spacing={3} style={{paddingBottom:"2vh"}}>
+                   <Grid item md={8} sm={8} xs={8}>
+                   <TextField
+                    id="outlined-basic"
+                    label="feedback"
+                    color="primary"
+                    type="text"
+                    name="feedback"
+                    variant="outlined"
+                    value={feedback}
+                    fullWidth
+                    autoComplete='off'
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                         
+                        </InputAdornment>
+                      ),
+                    }}
+                    onChange={(e) => setFeedback(e.target.value)}
+                  />
+                  
+                  </Grid> 
+                </Grid>
+                {/*for notes*/}
+                <Grid container spacing={3} style={{paddingBottom:"2vh"}}>
+                   <Grid item md={8} sm={8} xs={8}>
+                   <Rating
+                  name="hover-feedback"
+                  value={stars}
+                  precision={1}
+                  onChange={(event, newValue) => {
+                  setStars(newValue);
+                  }}
+                  onChangeActive={(event, newHover) => {
+                    setHover(newHover);
+                  }}
+                  emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
+                  />
+                  </Grid> 
+                   </Grid>
+                  <Button
+                    style={{ marginRight:"20vh", textAlign:"center" , width:"40vh" , fontSize:"1rem"}}
+                    variant="contained"
+                    onClick={submit}
+                  >Submit</Button>
+                </Grid>
+                </div>
+      </Drawer>
     </div>
   );
 };

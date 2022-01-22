@@ -1,6 +1,6 @@
 import React from 'react';
 import {Grid} from '@mui/material'
-const AlreadyUploaded = () => {
+const AlreadyUploaded = ({id}) => {
   return (
   <div>
       <div style={{fontSize:"1.2rem" , fontWeight:"600",marginTop:"5vh"}}>FeedBack</div>

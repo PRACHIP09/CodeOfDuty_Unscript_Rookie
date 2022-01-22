@@ -17,11 +17,12 @@ import BeenhereIcon from '@mui/icons-material/Beenhere';
 import Validation from './TeacherValidation';
 import {useHistory} from 'react-router-dom';
 import close from '../Images/close.png';
-const CourseToUpload = () => {
+const CourseToUpload = ({id}) => {
     const history = useHistory();
     const [open, setOpen] = React.useState(false);
     const [category,setCategory] = useState("");
     const [level , setLevel] = useState("");
+    const [notes , setNotes] = useState([]);
     const handleDrawerOpen = () => {
     setOpen(true);
     };
@@ -45,14 +46,13 @@ const CourseToUpload = () => {
       });
       console.log(values);
     };
-
-
+    
   return (
   <div style={{paddingLeft:"6vh" ,paddingTop:"2vh" , paddingRight:"1vh"}}>
       <Grid spacing={3}>
                 
                 <div style={{padding:"0 0 20px 0" , fontSize:"1.5rem" , textAlign:"left" , color:"#141b37"}}>
-                Upload New Courses
+                Upload New Courses {id}
                 </div>
                 {/* for name*/}
                 <Grid container spacing={3} style={{paddingBottom:"2vh"}}>
@@ -284,13 +284,11 @@ const CourseToUpload = () => {
                    <Grid item md={8} sm={8} xs={8}>
                    <TextField
                     id="outlined-basic"
-                    label="Notes"
                     color="primary"
-                    type="text"
-                    error={errors.notes}
+                    type="file"
                     name="notes"
                     variant="outlined"
-                    value={values.notes}
+                    value={notes}
                     fullWidth
                     autoComplete='off'
                     InputProps={{
@@ -300,15 +298,8 @@ const CourseToUpload = () => {
                         </InputAdornment>
                       ),
                     }}
-                    onChange={handleChanges}
+                    onChange={(e) => setNotes(e.target.files[0])}
                   />
-                 {errors.notes ? (
-                    <FormHelperText error>{errors.notes}</FormHelperText>
-                  ) : (
-                    <FormHelperText style={{ visibility: "hidden" }}>
-                      ..
-                    </FormHelperText>
-                  )}
                   </Grid> 
                 </Grid>
                 <Button

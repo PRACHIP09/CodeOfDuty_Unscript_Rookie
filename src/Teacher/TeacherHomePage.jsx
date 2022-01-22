@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { Grid ,
     Card,
     Typography,
@@ -25,6 +25,11 @@ const TeacherHomePage = () => {
     const [openqa, setOpenqa] = React.useState(false);
     const [openfdbck , setOpenfdbck] = React.useState(false);
     const [openprf , setOpenPrf] = React.useState(false);
+    
+    const [load,setLoad] = useState([]);
+    // useEffect(() => {
+    //   loadList();
+    // }, []);
     const handleDrawerOpen = () => {
     setOpen(true);
     };
@@ -49,7 +54,18 @@ const TeacherHomePage = () => {
     const handleDrawerClosePrf = () => {
     setOpenPrf(false);
     };
-
+/*const loadList = async () => {
+      const result = await axios.get(
+        `http://communitybuyingbackend.pythonanywhere.com//main/product/0/`,
+        {
+          headers: {
+            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQwMjczNjYzLCJpYXQiOjE2NDAwMDc3NjQsImp0aSI6ImFlMDRjYTc3N2Y1YjQyZDZhN2Q5NTA5NWJlMzJkYTZlIiwidXNlcl9pZCI6Mn0.Kk6CCX4aFsYzvSr6YVCTLbCwGypGTk46nFIHT5b4prE`,
+          },
+        }
+      );
+      setLoad(result.data);
+    };
+*/
   return (
   <div style={{padding:"6vh"}} >
         <Grid container spacing={3} >
@@ -63,16 +79,6 @@ const TeacherHomePage = () => {
         }}>
         <img src={add} alt="add" onClick={handleDrawerOpen} style={{height:"6vh", width:"6vh" , cursor:"pointer" }}/>
         </Grid>
-       {/* <Grid md={1} xs={1}
-        component={motion.div}
-        whileHover={{
-        scale: 1.08,
-        textShadow: "0 0 8px rgb(255,255,255)",
-        transition: { duration: 0.3 },
-        }}>
-        <img src={user} alt="user" onClick={handleDrawerOpenPrf} style={{height:"6vh", width:"6vh" , cursor:"pointer"}}
-        />
-      </Grid>*/}
         </Grid>
         <div className="heading" style={{padding:"3vh" , fontWeight:"700" , fontSize:"1.7rem" , color:"#00ACEA" , alignItems:"Left"}}>
         Course Uploaded
@@ -127,7 +133,8 @@ const TeacherHomePage = () => {
         open={open}
       >
        <img src={close} alt="close" onClick={handleDrawerClose} style={{height:"5vh", width:"5vh" , cursor:"pointer" , marginLeft:"80%" , marginTop:"2vh"}}/>
-       <CourseToUpload /> 
+       <CourseToUpload id="8"/>
+       {/* <CourseToUpload id={user.id}/>  */}
       </Drawer>
       <Drawer
         sx={{
@@ -160,22 +167,6 @@ const TeacherHomePage = () => {
       >
        <img src={close} alt="close" onClick={handleDrawerCloseFdbck} style={{height:"5vh", width:"5vh" , cursor:"pointer" , marginLeft:"80%" , marginTop:"2vh"}}/>
        <AlreadyUploaded/> 
-      </Drawer>
-      <Drawer
-        sx={{
-          width: 500,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: 500,
-            boxSizing: 'border-box',
-          },
-        }}
-        variant="persistent"
-        anchor="right"
-        open={openprf}
-      >
-       <img src={close} alt="close" onClick={handleDrawerClosePrf} style={{height:"5vh", width:"5vh" , cursor:"pointer" , marginLeft:"80%" , marginTop:"2vh"}}/>
-       <Profile/> 
       </Drawer>
   </div>
   )
