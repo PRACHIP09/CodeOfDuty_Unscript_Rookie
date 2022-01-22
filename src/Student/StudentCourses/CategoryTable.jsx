@@ -37,28 +37,40 @@ const useStyles = makeStyles((theme) => ({
 const drawerWidth = 302;
 const Category = [
   {
-    label: "Exotic vegetable",
+    label: "Mechanical",
   },
   {
-    label: "Meat & Seafood",
+    label: "Computer",
   },
   {
-    label: "Daily essentials",
+    label: "Electronics And Telecommunication",
   },
   {
-    label: "Dairy Products",
+    label: "Information Technology",
   },
   {
-    label: "Healthy Food",
+    label: "Data Science",
   },
   {
-    label: "Indian Grocery",
+    label: "Artificial Intelligence And Machine Learning",
   },
   {
-    label: "Fruits",
+    label: "Artificial Intelligence (AI) And Data Science",
   },
   {
-    label: "Bakery Items",
+    label: "IOT And Cyber Security With Block Chain Technology",
+  },
+  {
+    label: "Chemical",
+  },
+  {
+    label: "Electronics",
+  },
+  {
+    label: "Production",
+  },
+  {
+    label: "Biomedical",
   },
 ];
 
@@ -189,7 +201,7 @@ export default function CategoryTable() {
                         fontWeight: 700,
                         color: "black",
                       }}
-                      to={`/category/${x.label}`}
+                      to={`/courses/${x.label}`}
                     >
                       <p>{x.label}</p>
                     </Link>
