@@ -23,6 +23,8 @@ const CourseToUpload = ({id}) => {
     const [category,setCategory] = useState("");
     const [level , setLevel] = useState("");
     const [notes , setNotes] = useState([]);
+    const [video , setVideos] = useState([]);
+    const [image,setImage] =useState([]);
     const handleDrawerOpen = () => {
     setOpen(true);
     };
@@ -33,9 +35,9 @@ const CourseToUpload = ({id}) => {
     const [values, setValues] = useState({
         name: "",
         price: "",
-        videos: "",
         description: "",
-        notes: "",
+        lectno:"",
+        course:"",
       });
     const [errors, setErrors] = useState({});
     const [notValid, setCorrectData] = useState(true);
@@ -46,7 +48,62 @@ const CourseToUpload = ({id}) => {
       });
       console.log(values);
     };
-    
+    const handleSubmission =async()=>{
+    console.log("fromSubmit");
+    let response = await fetch(
+      "https://mini-project-unicode.herokuapp.com/3js/user/register",
+      {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ 
+          name: values.name,
+          description: values.description,
+          price: values.price,
+          category: {category},
+          image:{image},
+          level:{level},
+
+        }),
+      }
+    );
+    let data = await response.json();
+       // console.log(response.status)
+      if (response.status === 201) {
+        console.log(data);
+        console.log(data.token);
+      } else {
+        alert("something wrong");
+      }
+    }
+    const handleVideo =async()=>{
+      console.log("fromSubmit");
+      let response = await fetch(
+        "https://mini-project-unicode.herokuapp.com/3js/user/register",
+        {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            notes: {category},
+            video:{image},
+            lect_No:values.lectno,
+            course:values.course,
+  
+          }),
+        }
+      );
+      let data = await response.json();
+         // console.log(response.status)
+        if (response.status === 201) {
+          console.log(data);
+          console.log(data.token);
+        } else {
+          alert("something wrong");
+        }
+      }
   return (
   <div style={{paddingLeft:"6vh" ,paddingTop:"2vh" , paddingRight:"1vh"}}>
       <Grid spacing={3}>
@@ -150,6 +207,27 @@ const CourseToUpload = ({id}) => {
                   )}
                   </Grid> 
                 </Grid>
+                <Grid container spacing={3} style={{paddingBottom:"2vh"}}>
+                   <Grid item md={8} sm={8} xs={8}>
+                   <TextField
+                    id="outlined-basic"
+                    color="primary"
+                    type="file"
+                    name="image"
+                    variant="outlined"
+                    fullWidth
+                    autoComplete='off'
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <VideoLibraryIcon color="primary" />
+                        </InputAdornment>
+                      ),
+                    }}
+                    onChange={(e) => setImage(e.target.files[0])}
+                  />
+                  </Grid> 
+                </Grid>
                 {/*for level*/}
                 <Grid container spacing={3} style={{paddingBottom:"2vh"}}>
                    <Grid item md={8} sm={8} xs={8}>
@@ -219,12 +297,22 @@ const CourseToUpload = ({id}) => {
                 </Grid>
                 
                 <Button
+                    style={{ marginRight:"20vh", textAlign:"center" , width:"40vh" , fontSize:"1rem" ,marginBottom:"2vh"}}
+                    variant="contained"
+                    onClick={() => {
+                      setErrors(Validation(values));
+                    }}
+                    onClick={handleSubmission}
+                    
+                  >SUBMIT</Button>
+                  <Button
                     style={{ marginRight:"20vh", textAlign:"center" , width:"40vh" , fontSize:"1rem" ,marginBottom:"5vh"}}
                     variant="contained"
                     onClick={() => {
                       setErrors(Validation(values));
                     }}
                     onClick={handleDrawerOpen}
+                    
                   >Add Videos and Link</Button>
                 
             </Grid>
@@ -249,16 +337,14 @@ const CourseToUpload = ({id}) => {
         </div>
        {/*for video*/}
        <Grid container spacing={3} style={{paddingBottom:"2vh"}}>
+                   
                    <Grid item md={8} sm={8} xs={8}>
                    <TextField
                     id="outlined-basic"
-                    label="Video"
                     color="primary"
-                    type="text"
-                    error={errors.video}
+                    type="file"
                     name="video"
                     variant="outlined"
-                    value={values.video}
                     fullWidth
                     autoComplete='off'
                     InputProps={{
@@ -268,10 +354,35 @@ const CourseToUpload = ({id}) => {
                         </InputAdornment>
                       ),
                     }}
+                    onChange={(e) => setVideos(e.target.files[0])}
+                  />
+                  </Grid> 
+                </Grid>
+                {/*for course*/}
+                <Grid container spacing={3} style={{paddingBottom:"2vh"}}>
+                   <Grid item md={8} sm={8} xs={8}>
+                   <TextField
+                    id="outlined-basic"
+                    label="Course"
+                    color="primary"
+                    type="text"
+                    error={errors.course}
+                    name="course"
+                    variant="outlined"
+                    value={values.course}
+                    fullWidth
+                    autoComplete='off'
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <AttachMoneyIcon color="primary" />
+                        </InputAdornment>
+                      ),
+                    }}
                     onChange={handleChanges}
                   />
-                 {errors.video ? (
-                    <FormHelperText error>{errors.video}</FormHelperText>
+                  {errors.course ? (
+                    <FormHelperText error>{errors.course}</FormHelperText>
                   ) : (
                     <FormHelperText style={{ visibility: "hidden" }}>
                       ..
@@ -288,7 +399,6 @@ const CourseToUpload = ({id}) => {
                     type="file"
                     name="notes"
                     variant="outlined"
-                    value={notes}
                     fullWidth
                     autoComplete='off'
                     InputProps={{
@@ -302,13 +412,46 @@ const CourseToUpload = ({id}) => {
                   />
                   </Grid> 
                 </Grid>
+                {/*for lectno*/}
+                <Grid container spacing={3} style={{paddingBottom:"2vh"}}>
+                   <Grid item md={8} sm={8} xs={8}>
+                   <TextField
+                    id="outlined-basic"
+                    label="Lecture Number"
+                    color="primary"
+                    type="text"
+                    error={errors.lectno}
+                    name="lectno"
+                    variant="outlined"
+                    value={values.lectno}
+                    fullWidth
+                    autoComplete='off'
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <AttachMoneyIcon color="primary" />
+                        </InputAdornment>
+                      ),
+                    }}
+                    onChange={handleChanges}
+                  />
+                  {errors.lectno ? (
+                    <FormHelperText error>{errors.lectno}</FormHelperText>
+                  ) : (
+                    <FormHelperText style={{ visibility: "hidden" }}>
+                      ..
+                    </FormHelperText>
+                  )}
+                  </Grid> 
+                </Grid>
+                
                 <Button
                     style={{ marginRight:"20vh", textAlign:"center" , width:"40vh" , fontSize:"1rem"}}
                     variant="contained"
                     onClick={() => {
                       setErrors(Validation(values));
                     }}
-
+                    onClick={handleVideo}
                   >Upload the Course</Button>
                 </Grid>
                 </div>

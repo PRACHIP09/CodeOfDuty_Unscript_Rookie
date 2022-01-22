@@ -9,6 +9,8 @@ import StudentHome from "./Student/StudentHome/StudentHome";
 import Admin from "./Accounts/Admin";
 import TeacherHomePage from "./Teacher/TeacherHomePage";
 import CourseLayout from "./Student/StudentCourses/CourseLayout";
+import StudentProfile from "./Student/StudentProfile";
+//import VideoChat from "./Extra/Video";
 function App() {
   return (
     <Router>
@@ -21,7 +23,7 @@ function App() {
             <Signup />
           </Route>
           <Route path="/profile">
-            
+          <StudentProfile/>
           </Route>
           <Route path="/home">
             <Navbar />
@@ -39,6 +41,9 @@ function App() {
           <Route path="/teacher">
             <TeacherHomePage />
           </Route>
+          {/*<Route path="/video">
+            <VideoChat/>
+  </Route>*/}
         </Switch>
       </div>
     </Router>

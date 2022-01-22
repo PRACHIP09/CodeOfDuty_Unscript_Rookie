@@ -19,6 +19,7 @@ import Doubts from './Doubts';
 import user from '../Images/user.png';
 import Profile from './Profile';
 import { motion } from "framer-motion";
+import axios from 'axios';
 import './teacher.css';
 const TeacherHomePage = () => {
     const [open, setOpen] = React.useState(false);
@@ -54,18 +55,18 @@ const TeacherHomePage = () => {
     const handleDrawerClosePrf = () => {
     setOpenPrf(false);
     };
-/*const loadList = async () => {
+const loadList = async () => {
       const result = await axios.get(
-        `http://communitybuyingbackend.pythonanywhere.com//main/product/0/`,
+        ``,
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQwMjczNjYzLCJpYXQiOjE2NDAwMDc3NjQsImp0aSI6ImFlMDRjYTc3N2Y1YjQyZDZhN2Q5NTA5NWJlMzJkYTZlIiwidXNlcl9pZCI6Mn0.Kk6CCX4aFsYzvSr6YVCTLbCwGypGTk46nFIHT5b4prE`,
+            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzMTE5NDExLCJpYXQiOjE2NDI4NjAyMTEsImp0aSI6ImRmMDY2NjJlY2M4MzRjODhiMDk4MmRmZWZiNTAzYjA0IiwidXNlcl9pZCI6MTZ9.uCSV0-x-swjH9E3GNMIRojBx9IQiqkww06tj0COxnLs`,
           },
         }
       );
       setLoad(result.data);
     };
-*/
+
   return (
   <div style={{padding:"6vh"}} >
         <Grid container spacing={3} >
@@ -81,7 +82,7 @@ const TeacherHomePage = () => {
         </Grid>
         </Grid>
         <div className="heading" style={{padding:"3vh" , fontWeight:"700" , fontSize:"1.7rem" , color:"#00ACEA" , alignItems:"Left"}}>
-        Course Uploaded
+        <u>Course Uploaded</u><br/><div style={{padding:"3vh" , fontWeight:"700" , fontSize:"1.5rem" , color:"#00ACEA" , alignItems:"Left"}}><i>"In learning you will teach and in teaching you will learn"</i></div>
         </div>
         <Grid container spacing={3} >
         <Grid item md={3} xs={12} sm={6}>
@@ -106,7 +107,7 @@ const TeacherHomePage = () => {
             <CardContent>
                 <Grid container spacing={3}>
                     <Grid items md={6} xs={6}>
-                       <Button style={{fontSize:"1.1rem"}} ><PeopleIcon sx={{fontSize:35}}/>78</Button>
+                       <Button style={{fontSize:"1.1rem"}}><PeopleIcon sx={{fontSize:35}}/>78</Button>
                     </Grid>
                     <Grid items md={3} xs={3}>
                     <img src={feedback} alt={feedback} onClick={handleDrawerOpenFdbck} style={{height:"6vh", width:"6vh" , cursor:"pointer" }}/>   
