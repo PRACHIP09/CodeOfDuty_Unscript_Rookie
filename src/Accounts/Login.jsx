@@ -25,7 +25,7 @@ import Swal from "sweetalert2";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import PermContactCalendarIcon from "@mui/icons-material/PermContactCalendar";
-import close from '../Images/close.png';
+import close from "../Images/close.png";
 import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import { motion } from "framer-motion";
@@ -37,10 +37,15 @@ function Copyright(props) {
       color="text.secondary"
       align="center"
       {...props}
-      style={{fontSize:"1.1rem"}}
+      style={{ fontSize: "1.1rem" }}
     >
       {"Copyright © "}
-      <Link color="inherit" style={{color:"#fe6c77" , textDecoration:"none"}}>Code of duty</Link>
+      <Link
+        color="inherit"
+        style={{ color: "#fe6c77", textDecoration: "none" }}
+      >
+        Code of duty
+      </Link>
       {new Date().getFullYear()}
       {"."}
     </Typography>
@@ -63,10 +68,10 @@ const Login = () => {
   const [passwordShow, setpassword] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
-  setOpen(true);
+    setOpen(true);
   };
   const handleDrawerClose = () => {
-  setOpen(false);
+    setOpen(false);
   };
   //   functions
   const handleChanges = (event) => {
@@ -83,7 +88,7 @@ const Login = () => {
   data.append("email", `${values.email}`);
   var config = {
     method: "post",
-    url: "http://localhost:8000/api/login/",
+    url: "http://b5da-1-22-101-132.ngrok.io/account/login/",
     headers: {
       "Content-Type": "application/json",
     },
@@ -92,7 +97,6 @@ const Login = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
@@ -108,7 +112,18 @@ const Login = () => {
           initial={{ x: "-100vw" }}
           animate={{ x: 0 }}
         >
-          <Button size='small' variant='contained' color='success' style={{transform:'translate(-180px,20px)',backgroundColor:'#fe6c77'}} onClick={handleDrawerOpen}>Admin ?</Button>
+          <Button
+            size="small"
+            variant="contained"
+            color="success"
+            style={{
+              transform: "translate(-180px,20px)",
+              backgroundColor: "#fe6c77",
+            }}
+            onClick={handleDrawerOpen}
+          >
+            Admin ?
+          </Button>
           <Box
             sx={{
               my: 8,
@@ -258,15 +273,15 @@ const Login = () => {
                     type="submit"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 , bgcolor:"#fe6c77" , boxShadow:"none"}}
+                    sx={{ mt: 3, mb: 2, bgcolor: "#fe6c77", boxShadow: "none" }}
                     component={motion.div}
-                     whileHover={{
-                     backgroundColor:"#fe6c77",
-                     scale: 1.08,
-                     textShadow: "0 0 8px rgb(255,255,255)",
-                     transition: { duration: 0.3 },
-                     }}
-                    style={{fontSize:"1.1rem"}}
+                    whileHover={{
+                      backgroundColor: "#fe6c77",
+                      scale: 1.08,
+                      textShadow: "0 0 8px rgb(255,255,255)",
+                      transition: { duration: 0.3 },
+                    }}
+                    style={{ fontSize: "1.1rem" }}
                     onClick={(e) => {
                       console.log(errors);
                       if (
@@ -278,7 +293,11 @@ const Login = () => {
                         axios(config)
                           .then(function (response) {
                             console.log(JSON.stringify(response.data));
-                            history.push("/home");
+                            if (response.data.teacher) {
+                              history.push("/teacher");
+                            } else {
+                              history.push("/home");
+                            }
                           })
                           .catch(function (error) {
                             console.log(error);
@@ -304,31 +323,56 @@ const Login = () => {
                       {/*<Link href="#" variant="body2">
                         Forgot password?
                       </Link>*/}
-                      <Button 
-                      color="primary" 
-                      variant="outlined" 
-                      fullWidth 
-                      style={{marginBottom:"3vh"}}
-                      component={motion.div}
-                      whileHover={{
-                      scale: 1.08,
-                      textShadow: "0 0 8px rgb(255,255,255)",
-                      transition: { duration: 0.3 },
-                      }}><Link to="#" style={{textDecoration:"none",fontSize:"1rem" , color:"blue"}}>Forgot Password ?</Link></Button>
+                      <Button
+                        color="primary"
+                        variant="outlined"
+                        fullWidth
+                        style={{ marginBottom: "3vh" }}
+                        component={motion.div}
+                        whileHover={{
+                          scale: 1.08,
+                          textShadow: "0 0 8px rgb(255,255,255)",
+                          transition: { duration: 0.3 },
+                        }}
+                      >
+                        <Link
+                          to="#"
+                          style={{
+                            textDecoration: "none",
+                            fontSize: ".8rem",
+                            color: "blue",
+                          }}
+                        >
+                          Forgot Password ?
+                        </Link>
+                      </Button>
                     </Grid>
                     <Grid item xs={12} md={12}>
                       {/*<Link to="/signin" variant="body2">
                         {"Already have an account ? Signin"}
                     </Link>*/}
-                     <Button color="primary" 
-                     variant="outlined" 
-                     fullWidth
-                     component={motion.div}
-                     whileHover={{
-                     scale: 1.08,
-                     textShadow: "0 0 8px rgb(255,255,255)",
-                     transition: { duration: 0.3 },
-                     }}><Link to="/signin" style={{textDecoration:"none" , fontSize:"1rem" ,color:"blue"}}>Don't have an account ? Sign Up</Link></Button>
+                      <Button
+                        color="primary"
+                        variant="outlined"
+                        fullWidth
+                        component={motion.div}
+                        whileHover={{
+                          scale: 1.08,
+                          textShadow: "0 0 8px rgb(255,255,255)",
+                          transition: { duration: 0.3 },
+                        }}
+                      >
+                        <Link
+                          to="/signin"
+                          style={{
+                            textDecoration: "none",
+                            fontSize: ".8rem",
+                            color: "blue",
+                          }}
+                        >
+                          Don't have an account ? Sign Up
+                        </Link>
+                      </Button>
                     </Grid>
                   </Grid>
                   <Copyright sx={{ mt: 5 }} />
@@ -359,17 +403,28 @@ const Login = () => {
         sx={{
           width: 600,
           flexShrink: 0,
-          '& .MuiDrawer-paper': {
+          "& .MuiDrawer-paper": {
             width: 600,
-            boxSizing: 'border-box',
+            boxSizing: "border-box",
           },
         }}
         variant="persistent"
         anchor="left"
         open={open}
       >
-       <img src={close} alt="close" onClick={handleDrawerClose} style={{height:"5vh", width:"5vh" , cursor:"pointer" ,marginLeft:"10%", marginTop:"2vh"}}/>
-       <Grid
+        <img
+          src={close}
+          alt="close"
+          onClick={handleDrawerClose}
+          style={{
+            height: "5vh",
+            width: "5vh",
+            cursor: "pointer",
+            marginLeft: "10%",
+            marginTop: "2vh",
+          }}
+        />
+        <Grid
           item
           xs={12}
           sm={12}
@@ -395,7 +450,7 @@ const Login = () => {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-            Login As Admin
+              Login As Admin
             </Typography>
 
             <Formik
@@ -531,15 +586,15 @@ const Login = () => {
                     type="submit"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 , bgcolor:"#fe6c77" , boxShadow:"none"}}
+                    sx={{ mt: 3, mb: 2, bgcolor: "#fe6c77", boxShadow: "none" }}
                     component={motion.div}
-                     whileHover={{
-                     backgroundColor:"#fe6c77",
-                     scale: 1.08,
-                     textShadow: "0 0 8px rgb(255,255,255)",
-                     transition: { duration: 0.3 },
-                     }}
-                    style={{fontSize:"1.1rem"}}
+                    whileHover={{
+                      backgroundColor: "#fe6c77",
+                      scale: 1.08,
+                      textShadow: "0 0 8px rgb(255,255,255)",
+                      transition: { duration: 0.3 },
+                    }}
+                    style={{ fontSize: "1.1rem" }}
                     onClick={(e) => {
                       console.log(errors);
                       if (
@@ -572,8 +627,7 @@ const Login = () => {
                   >
                     Submit
                   </Button>
-                  <Grid container>
-                  </Grid>
+                  <Grid container></Grid>
                   <Copyright sx={{ mt: 5 }} />
                 </Box>
               )}
@@ -581,7 +635,7 @@ const Login = () => {
           </Box>
         </Grid>
 
-       {/* <CourseToUpload id={user.id}/>  */}
+        {/* <CourseToUpload id={user.id}/>  */}
       </Drawer>
     </ThemeProvider>
   );

@@ -21,6 +21,7 @@ import {
   import { useHistory } from "react-router-dom";
   import { Link } from "react-router-dom";
   import axios from "axios";
+  import Swal from "sweetalert2";
   var difficult = "hard";
   const DomainCourse = () => {
     const [enroll, setEnroll] = useState(false);
@@ -136,35 +137,39 @@ import {
                     )}
                   </span>
   
-                  {!enroll ? (
-                    <Button
-                      style={{
-                        float: "right",
-                        margin: "5px",
-                        borderRadius: "20px",
-                      }}
-                      variant="contained"
-                      onClick={(e) => {
-                        setEnroll(true);
-                        handleClose(e);
-                      }}
-                    >
+                  <Button
+                    style={{
+                      float: "right",
+                      margin: "5px",
+                      borderRadius: "20px",
+                    }}
+                    variant="contained"
+                    onClick={(e) => {
+                      setEnroll(true);
+                      handleClose(e);
+                      var config = {
+                        method: "post",
+                        url: "http://b5da-1-22-101-132.ngrok.io/course/student/2/",
+                        headers: {
+                          Authorization:
+                            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzMTQ2MTkwLCJpYXQiOjE2NDI4ODY5OTAsImp0aSI6IjVjMzJmMGFlMjhiMzQ1MjM4MzQ1MzcxNzBiMGQ2ZTYyIiwidXNlcl9pZCI6MTB9.dXJWzQ97XWHM2cDlITUiJF7uZ66ia8MxrptuxdOzMQQ",
+                        },
+                      };
+
+                      axios(config).then(function (response) {
+                        console.log(JSON.stringify(response.data));
+                        Swal.fire({
+                          icon: "success",
+                          title: "Added to the cart",
+                        });
+                      });
+                      history.push("/profile").catch(function (error) {
+                        console.log(error);
+                      });
+                    }}
+                  >
                       Enroll
                     </Button>
-                  ) : (
-                    <Button
-                      style={{
-                        float: "right",
-                        margin: "5px",
-                        borderRadius: "20px",
-                      }}
-                      variant="contained"
-                      color="error"
-                      onClick={() => setEnroll(false)}
-                    >
-                      Expel
-                    </Button>
-                  )}
   
                   <br />
                   <br />
