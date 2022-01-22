@@ -85,7 +85,7 @@ const Signup = () => {
   data.append("email", `${values.email}`);
   var config = {
     method: "post",
-    url: "http://e038-1-22-101-132.ngrok.io/account/signup/",
+    url: "http://b5da-1-22-101-132.ngrok.io/account/signup/",
     headers: {
       "Content-Type": "application/json",
     },
@@ -326,9 +326,15 @@ const Signup = () => {
                         </FormHelperText>
                       )}
                     </Grid>
-                    <br /><br/>
+                    <br />
+                    <br />
+                    <br />
                     <FormControl
-                      style={{ width: "420px", transform: "translateX(17px)" }}
+                      style={{
+                        width: "490px",
+                        transform: "translateX(17px)",
+                        margin: "5px",
+                      }}
                       fullWidth
                     >
                       <InputLabel id="demo-simple-select-label">
@@ -339,7 +345,7 @@ const Signup = () => {
                         id="demo-simple-select"
                         value={teacher}
                         label="Role"
-                        onChange={(e) =>setRole(e.target.value)}
+                        onChange={(e) => setRole(e.target.value)}
                       >
                         <MenuItem value={true}>Teacher</MenuItem>
                         <MenuItem value={false}>Student</MenuItem>
@@ -370,8 +376,18 @@ const Signup = () => {
                         axios(config)
                           .then(function (response) {
                             console.log(JSON.stringify(response.data));
-                            
-                            history.push("/home");
+                            Swal.fire({
+                              icon: "success",
+                              title: "Email verfication",
+                              text: "Link is sent to your mail",
+                              showClass: {
+                                popup: "animate__animated animate__fadeInDown",
+                              },
+                              hideClass: {
+                                popup: "animate__animated animate__fadeOutUp",
+                              },
+                            });
+                            // history.push("/home");
                           })
                           .catch(function (error) {
                             console.log(error);

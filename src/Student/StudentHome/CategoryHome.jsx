@@ -125,8 +125,7 @@ function CategoryHome() {
                           marginTop: "10px",
                         }}
                       >
-                        {" "}
-                        AI/ML{" "}
+                        AI/ML
                       </h3>
                     </div>
                   </div>
@@ -142,10 +141,10 @@ function CategoryHome() {
                     }}
                   >
                     <p>
-                      Lorem ipsum dolor sit amet, consectur adipiscing elit.
-                      Feugiat porttitor duis aliquet arcu. Feugiat porttitor
-                      duis aliquet arcu. Feugiat porttior duis aliquet arcu.
-                      Feugiat porttitor duis aliquet arcu. Feugiat duis aliquet.{" "}
+                      AI/ML—short for artificial intelligence (AI) and machine
+                      learning (ML)—represents an important evolution in
+                      computer science and data processing that is quickly
+                      transforming a vast array of industries
                     </p>
                   </div>
                 </div>
@@ -200,8 +199,7 @@ function CategoryHome() {
                           marginTop: "10px",
                         }}
                       >
-                        {" "}
-                        AI/ML{" "}
+                        IOT
                       </h3>
                     </div>
                   </div>
@@ -217,10 +215,11 @@ function CategoryHome() {
                     }}
                   >
                     <p>
-                      Lorem ipsum dolor sit amet, consectur adipiscing elit.
-                      Feugiat porttitor duis aliquet arcu. Feugiat porttitor
-                      duis aliquet arcu. Feugiat porttior duis aliquet arcu.
-                      Feugiat porttitor duis aliquet arcu. Feugiat duis aliquet.{" "}
+                      The internet of things is a system of interrelated
+                      computing devices, mechanical and digital machines,
+                      objects, animals or people that are provided with unique
+                      identifiers (UIDs) and the ability to transfer data over a
+                      network
                     </p>
                   </div>
                 </div>
@@ -275,8 +274,7 @@ function CategoryHome() {
                           marginTop: "10px",
                         }}
                       >
-                        {" "}
-                        AI/ML{" "}
+                        Web development
                       </h3>
                     </div>
                   </div>
@@ -292,10 +290,11 @@ function CategoryHome() {
                     }}
                   >
                     <p>
-                      Lorem ipsum dolor sit amet, consectur adipiscing elit.
-                      Feugiat porttitor duis aliquet arcu. Feugiat porttitor
-                      duis aliquet arcu. Feugiat porttior duis aliquet arcu.
-                      Feugiat porttitor duis aliquet arcu. Feugiat duis aliquet.{" "}
+                      Web development is the work involved in developing a
+                      website for the Internet or an intranet Web development
+                      can range from developing a simple single static page of
+                      plain text to complex web applications, electronic
+                      businesses, and social network services.
                     </p>
                   </div>
                 </div>
@@ -350,8 +349,7 @@ function CategoryHome() {
                           marginTop: "10px",
                         }}
                       >
-                        {" "}
-                        AI/ML{" "}
+                        App development
                       </h3>
                     </div>
                   </div>
@@ -367,10 +365,11 @@ function CategoryHome() {
                     }}
                   >
                     <p>
-                      Lorem ipsum dolor sit amet, consectur adipiscing elit.
-                      Feugiat porttitor duis aliquet arcu. Feugiat porttitor
-                      duis aliquet arcu. Feugiat porttior duis aliquet arcu.
-                      Feugiat porttitor duis aliquet arcu. Feugiat duis aliquet.{" "}
+                      App development is the process in which developers create
+                      an application to be used on smartphones, tablets and
+                      other mobile devices. While app development sometimes
+                      involves creating a web-based app or a desktop version of
+                      the app
                     </p>
                   </div>
                 </div>

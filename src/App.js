@@ -10,6 +10,8 @@ import Admin from "./Accounts/Admin";
 import TeacherHomePage from "./Teacher/TeacherHomePage";
 import CourseLayout from "./Student/StudentCourses/CourseLayout";
 import Chatbot from "./Extra/Chatbot";
+import DomainCourse from "./Student/StudentCourses/DomainCourse";
+import Verification from "./Accounts/Verification";
 function App() {
   return (
     <Router>
@@ -27,9 +29,13 @@ function App() {
             <StudentHome />
             <Footer />
           </Route>
-          <Route path="/courses">
+          <Route exact path="/courses">
             <Navbar />
             <CourseLayout />
+          </Route>
+          <Route path={"/courses/:type"}>
+            <Navbar />
+            <DomainCourse />
           </Route>
           <Route path="/admin">
             <Admin />
@@ -41,11 +47,12 @@ function App() {
             <Navbar />
             <ContactUs />
           </Route>
-          <Route path='/chat'>
-            <Chatbot/>
+          <Route path="/chat">
+            <Chatbot />
           </Route>
-          <Route path={`/account/email-verify/?token=:id`}>
-            <h1>dbicsjk</h1>
+          {/* <Route path={`/account/email-verify/:token`} component={Verification}/> */}
+          <Route exact path="/account/email-verify/user-id=:token">
+            <Verification />
           </Route>
         </Switch>
       </div>

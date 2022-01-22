@@ -23,13 +23,13 @@ function Trending() {
         >
           <Grid item sm={12} md={8}>
             <div className="abtheading">
-              You&#39;re stuck at home but your ideas doesn&#39;t have to be. Write some
-              lines of code!
+              You&#39;re stuck at home but your ideas doesn&#39;t have to be. Do some
+              amazing courses!
             </div>
             <div className="abtcontent">
-              With over 200 participants from numerous colleges, the hackathon
-              is a gathering where individual programmers collaborate their
-              codes to make industry-grade projects.
+              With over 200 participants from numerous colleges, the courses are
+               a gathering where individual students collaborate their
+              work to make industry-grade projects.
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={4} spacing={3} style={{width:"100%", height:"100%"}}>
@@ -42,19 +42,19 @@ function Trending() {
             >
               <SplideSlide>
                 <img
-                  src="https://cdn.pixabay.com/photo/2018/04/06/00/25/trees-3294681__480.jpg"
+                  src="https://images.pexels.com/photos/3784316/pexels-photo-3784316.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                   alt="Carousel 1"
                 />
               </SplideSlide>
               <SplideSlide>
                 <img
-                  src="https://cdn.pixabay.com/photo/2018/04/06/00/25/trees-3294681__480.jpg"
+                  src="https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                   alt="Carousel 2"
                 />
               </SplideSlide>
               <SplideSlide>
                 <img
-                  src="https://cdn.pixabay.com/photo/2018/04/06/00/25/trees-3294681__480.jpg"
+                  src="https://images.pexels.com/photos/8325717/pexels-photo-8325717.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
                   alt="Carousel 3"
                 />
               </SplideSlide>
