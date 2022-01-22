@@ -9,6 +9,7 @@ import StudentHome from "./Student/StudentHome/StudentHome";
 import Admin from "./Accounts/Admin";
 import TeacherHomePage from "./Teacher/TeacherHomePage";
 import CourseLayout from "./Student/StudentCourses/CourseLayout";
+import Chatbot from "./Extra/Chatbot";
 function App() {
   return (
     <Router>
@@ -20,14 +21,11 @@ function App() {
           <Route path="/signin">
             <Signup />
           </Route>
-          <Route path="/profile">
-            
-          </Route>
+          <Route path="/profile"></Route>
           <Route path="/home">
             <Navbar />
             <StudentHome />
-            {/* <ContactUs /> */}
-            {/* <Footer /> */}
+            <Footer />
           </Route>
           <Route path="/courses">
             <Navbar />
@@ -38,6 +36,13 @@ function App() {
           </Route>
           <Route path="/teacher">
             <TeacherHomePage />
+          </Route>
+          <Route path="/contactus">
+            <Navbar />
+            <ContactUs />
+          </Route>
+          <Route path='/chat'>
+            <Chatbot/>
           </Route>
         </Switch>
       </div>

@@ -38,7 +38,7 @@ function CategoryHome() {
             >
               Domains
             </span>
-            <Link className="LinkTag" to='/studentCourse'>
+            <Link className="LinkTag" to='/courses'>
               <Button
                 style={{
                   transform: "translate(450px,10px)",

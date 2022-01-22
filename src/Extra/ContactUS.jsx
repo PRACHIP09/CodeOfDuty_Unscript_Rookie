@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Grid } from "@mui/material";
 import { Button } from "@mui/material";
 import { BsTelephoneForwardFill, BsArrowDown } from "react-icons/bs";
@@ -8,6 +8,13 @@ import { Formik } from "formik";
 import "./Contactus.css";
 
 export default function ContactUS() {
+  // move page to top
+  const onTop = () => {
+    window.scrollTo(0, 0);
+  };
+  useEffect(() => {
+    onTop();
+  }, []);
   const [value, setValue] = useState({
     email: "",
     fname: "",
@@ -38,7 +45,8 @@ export default function ContactUS() {
     data: data,
   };
   return (
-    <div style={{ backgroundColor: "#000324", paddingBottom: "30px" }}>
+    <div style={{  paddingBottom: "30px",backgroundColor: '#9e8fb2',
+    backgroundImage: 'linear-gradient(315deg, #9e8fb2 0%, #a7acd9 74%)',transform:'translateY(-20px)'}}>
       <center>
         <h1 className="heading">
           GET IN TOUCH<BsArrowDown></BsArrowDown>
@@ -95,7 +103,6 @@ export default function ContactUS() {
             <form onSubmit={handleSubmit}>
               <Grid className="detail" container spacing={0}>
                 <Grid
-                  style={{ backgroundColor: "#000324" }}
                   item
                   md={6}
                   sm={12}
@@ -112,12 +119,10 @@ export default function ContactUS() {
                   item
                   md={6}
                   sm={12}
-                  style={{ backgroundColor: "#000324" }}
                 >
                   <div className="inputFields">
                     <Grid container spacing={3}>
                       <Grid
-                        style={{ backgroundColor: "#000324" }}
                         item
                         md={6}
                         sm={6}
@@ -138,7 +143,6 @@ export default function ContactUS() {
                         {errors.fname && touched.fname && errors.fname}
                       </Grid>
                       <Grid
-                        style={{ backgroundColor: "#000324" }}
                         item
                         md={6}
                         sm={6}
@@ -160,7 +164,6 @@ export default function ContactUS() {
                         {errors.lname && touched.lname && errors.lname}
                       </Grid>
                       <Grid
-                        style={{ backgroundColor: "#000324" }}
                         item
                         sm={6}
                         xs={12}
@@ -182,7 +185,6 @@ export default function ContactUS() {
                         {errors.email && touched.email && errors.email}
                       </Grid>
                       <Grid
-                        style={{ backgroundColor: "#000324" }}
                         item
                         sm={6}
                         xs={12}
@@ -202,7 +204,7 @@ export default function ContactUS() {
 
                         {errors.subject && touched.subject && errors.subject}
                       </Grid>
-                      <Grid style={{ backgroundColor: "#000324" }} item xs={12}>
+                      <Grid  item xs={12}>
                         <label for="message">Message:</label>
                         <input
                           value={values.message}
@@ -226,7 +228,6 @@ export default function ContactUS() {
                     type="submit"
                     disabled={isSubmitting}
                     style={{
-                      backgroundColor: "#FA4239",
                       width: "160px",
                       borderRadius: "20px",
                       fontSize: "1.2rem",
@@ -248,7 +249,7 @@ export default function ContactUS() {
                   <br />
                   <Grid className="contact" container spacing={3}>
                     <Grid
-                      style={{ backgroundColor: "#000324" }}
+                     
                       item
                       sm={6}
                       xs={12}
@@ -259,7 +260,7 @@ export default function ContactUS() {
                       </h2>
                     </Grid>
                     <Grid
-                      style={{ backgroundColor: "#000324" }}
+                   
                       item
                       sm={6}
                       xs={12}

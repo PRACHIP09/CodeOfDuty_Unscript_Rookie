@@ -1,5 +1,5 @@
 import { Grid, Paper, Button, Tooltip } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CategoryTable from "./CategoryTable";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import Rating from "@mui/material/Rating";
@@ -7,11 +7,19 @@ import SignalCellular4BarOutlinedIcon from "@mui/icons-material/SignalCellular4B
 import SignalCellular1BarOutlinedIcon from "@mui/icons-material/SignalCellular1BarOutlined";
 import SignalCellular3BarOutlinedIcon from "@mui/icons-material/SignalCellular3BarOutlined";
 import "./course.css";
+import { Link } from "react-router-dom";
 var difficult = "hard";
 const CourseLayout = () => {
   const [enroll, setEnroll] = useState(false);
   const [open, setOpen] = React.useState(false);
 
+  // move page to top
+  const onTop = () => {
+    window.scrollTo(0, 0);
+  };
+  useEffect(() => {
+    onTop();
+  }, []);
   const handleClick = () => {
     setOpen(true);
   };
@@ -51,20 +59,37 @@ const CourseLayout = () => {
               &#8377; 100
             </span>
             <span>
-
-            {difficult == "easy" ? (
-              <Tooltip title="Basic level">
-                <SignalCellular1BarOutlinedIcon color="warning" style={{fontSize:'2rem',transform:'translate(25px,5px)' }} />
-              </Tooltip>
-            ) : difficult == "hard" ? (
-              <Tooltip title="Difficult level">
-              <SignalCellular4BarOutlinedIcon color="warning" style={{fontSize:'2rem',transform:'translate(25px,5px)' }}/>
-              </Tooltip>
-            ) : (
-              <Tooltip title="Intermediate level">
-              <SignalCellular3BarOutlinedIcon color="warning" style={{fontSize:'2rem',transform:'translate(25px,5px)' }}/>
-              </Tooltip>
-            )}
+              {difficult == "easy" ? (
+                <Tooltip title="Basic level">
+                  <SignalCellular1BarOutlinedIcon
+                    color="warning"
+                    style={{
+                      fontSize: "2rem",
+                      transform: "translate(25px,5px)",
+                    }}
+                  />
+                </Tooltip>
+              ) : difficult == "hard" ? (
+                <Tooltip title="Difficult level">
+                  <SignalCellular4BarOutlinedIcon
+                    color="warning"
+                    style={{
+                      fontSize: "2rem",
+                      transform: "translate(25px,5px)",
+                    }}
+                  />
+                </Tooltip>
+              ) : (
+                <Tooltip title="Intermediate level">
+                  <SignalCellular3BarOutlinedIcon
+                    color="warning"
+                    style={{
+                      fontSize: "2rem",
+                      transform: "translate(25px,5px)",
+                    }}
+                  />
+                </Tooltip>
+              )}
             </span>
 
             {!enroll ? (
@@ -88,7 +113,7 @@ const CourseLayout = () => {
                 Expel
               </Button>
             )}
-           
+
             <br />
             <br />
 
@@ -97,15 +122,17 @@ const CourseLayout = () => {
               defaultValue={2.5}
               precision={0.5}
               readOnly
-              style={{float:'left',margin:"5px"}}
+              style={{ float: "left", margin: "5px" }}
             />
-             <Tooltip
+            <Tooltip
               arrow
               title="Have one to one conversations with our teachers"
             >
-              <Button>
-                <QuestionAnswerIcon />
-              </Button>
+              <Link to="/chat" style={{textDecoration:'none'}}>
+                <Button>
+                  <QuestionAnswerIcon />
+                </Button>
+              </Link>
             </Tooltip>
             <Button style={{ fontSize: ".7rem" }}>
               Give your valuable Feedback
