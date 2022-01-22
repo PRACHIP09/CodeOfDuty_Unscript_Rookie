@@ -8,6 +8,7 @@ import Footer from "./Extra/Footer";
 import StudentHome from "./Student/StudentHome/StudentHome";
 import Admin from "./Accounts/Admin";
 import TeacherHomePage from "./Teacher/TeacherHomePage";
+import CourseLayout from "./Student/StudentCourses/CourseLayout";
 function App() {
   return (
     <Router>
@@ -19,18 +20,21 @@ function App() {
           <Route path="/signin">
             <Signup />
           </Route>
-
           <Route path="/homeStudent">
             <Navbar />
             <StudentHome />
             {/* <ContactUs /> */}
             {/* <Footer /> */}
           </Route>
+          <Route path="/studentCourses">
+            <Navbar />
+            <CourseLayout />
+          </Route>
           <Route path="/admin">
-            <Admin/>
+            <Admin />
           </Route>
           <Route path="/teacher">
-            <TeacherHomePage/>
+            <TeacherHomePage />
           </Route>
         </Switch>
       </div>
