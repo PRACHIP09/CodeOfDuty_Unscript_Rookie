@@ -1,14 +1,28 @@
 import { Button, Paper, Grid } from "@mui/material";
 import React from "react";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import "./studentH.css";
 import image1 from "../../Images/medi.png";
 import image2 from "../../Images/flame-1678.png";
 import image3 from "../../Images/study.png";
+import addNotification from 'react-push-notification';
 const Hero = () => {
-  AOS.init()
+  AOS.init();
+
+  const buttonClick = () => {
+    addNotification({
+      title: "Yipeeee",
+      subtitle: "New post added",
+      message: "Go checkout the new course.",
+      theme: "light",
+      duration:4000,
+      vibrate:Number[10],
+      
+      // native: true, // when using native, your OS will handle theming.
+    });
+  };
   return (
     <div>
       <center>
@@ -29,6 +43,7 @@ const Hero = () => {
               borderTopRightRadius: "15px",
               borderBottomLeftRadius: "15px",
             }}
+            onMouseOver={buttonClick}
           >
             Get Started Now
           </Button>

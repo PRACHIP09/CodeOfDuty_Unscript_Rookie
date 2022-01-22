@@ -3,8 +3,20 @@ import React from "react";
 // import './Loc.css'
 import { FaUserGraduate } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import addNotification from "react-push-notification";
 
 function CategoryHome() {
+  const buttonClick = () => {
+    addNotification({
+      title: "Yipeeee",
+      subtitle: "New post added",
+      message: "Go checkout the new course.",
+      theme: "light",
+      duration: 3000,
+      vibrate: Number[10],
+      // native: true, // when using native, your OS will handle theming.
+    });
+  };
   return (
     <div
       id="domain"
@@ -35,10 +47,11 @@ function CategoryHome() {
           >
             <span
               style={{ textAlign: "center", transform: "translateX(45px)" }}
+              onMouseOver={buttonClick}
             >
               Domains
             </span>
-            <Link className="LinkTag" to='/courses'>
+            <Link className="LinkTag" to="/courses">
               <Button
                 style={{
                   transform: "translate(450px,10px)",

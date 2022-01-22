@@ -168,6 +168,7 @@ const TeacherHomePage = () => {
        <img src={close} alt="close" onClick={handleDrawerCloseFdbck} style={{height:"5vh", width:"5vh" , cursor:"pointer" , marginLeft:"80%" , marginTop:"2vh"}}/>
        <AlreadyUploaded/> 
       </Drawer>
+      
   </div>
   )
 };

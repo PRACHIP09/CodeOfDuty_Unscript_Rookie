@@ -44,6 +44,9 @@ function App() {
           <Route path='/chat'>
             <Chatbot/>
           </Route>
+          <Route path={`/account/email-verify/?token=:id`}>
+            <h1>dbicsjk</h1>
+          </Route>
         </Switch>
       </div>
     </Router>
