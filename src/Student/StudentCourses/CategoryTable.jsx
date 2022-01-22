@@ -11,6 +11,7 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import "./course.css";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import {
   Grid,
@@ -108,7 +109,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 export default function CategoryTable() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -119,7 +120,7 @@ export default function CategoryTable() {
   };
   const classes = useStyles();
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box className="draw" sx={{ display: "flex" }}>
       <CssBaseline />
       {/* <AppBar position="fixed" open={open}>
         <Toolbar> */}
@@ -170,10 +171,11 @@ export default function CategoryTable() {
             <TableHead>
               <TableRow>
                 <TableCell
-                  style={{ backgroundColor: "#d1c75a" }}
+                  className="headDraw"
+                  style={{ backgroundColor: "#BAE5F4",fontSize:"1.4rem",fontFamily:'sans-serif',fontWeight:'700' }}
                   align="center"
                 >
-                  Categories
+                  COURSES
                 </TableCell>
               </TableRow>
             </TableHead>
