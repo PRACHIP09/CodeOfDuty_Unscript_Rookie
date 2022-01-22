@@ -5,6 +5,8 @@ import Trending from "./Trending";
 import Hero from "./Hero";
 import Publicity from "./Publicity";
 import { useEffect } from "react";
+// import Notification from "./Notification";
+import { Notifications } from 'react-push-notification';
 const StudentHome = () => {
   // move page to top
   const onTop = () => {
@@ -15,11 +17,13 @@ const StudentHome = () => {
   }, []);
   return (
     <>
+     <Notifications position="top-right"/>
       <Hero />
       <FeaturesApp />
       <Trending />
       <CategoryHome />
       <Publicity />
+      {/* <Notification/> */}
     </>
   );
 };

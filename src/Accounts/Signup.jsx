@@ -9,6 +9,10 @@ import {
   InputAdornment,
   Tooltip,
   IconButton,
+  FormControl,
+  Select,
+  InputLabel,
+  MenuItem,
   FormHelperText,
 } from "@mui/material";
 import axios from "axios";
@@ -28,6 +32,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import PermContactCalendarIcon from "@mui/icons-material/PermContactCalendar";
 import { Formik } from "formik";
 import { Link } from "react-router-dom";
+import { FormatAlignLeftSharp } from "@mui/icons-material";
 function Copyright(props) {
   return (
     <Typography
@@ -35,10 +40,12 @@ function Copyright(props) {
       color="text.secondary"
       align="center"
       {...props}
-      style={{fontSize:"1.1rem"}}
+      style={{ fontSize: "1.1rem" }}
     >
       {"Copyright © "}
-      <Link color="inherit" style={{color:"blue" , textDecoration:"none"}}>Your Website </Link>
+      <Link color="inherit" style={{ color: "blue", textDecoration: "none" }}>
+        Code of duty
+      </Link>
       {new Date().getFullYear()}
       {"."}
     </Typography>
@@ -58,8 +65,9 @@ const Signup = () => {
     password: "",
     password2: "",
     email: "",
-    phone: "",
   });
+
+  const [teacher, setRole] = React.useState(false);
   const [passwordShow, setpassword] = React.useState(false);
   const [passwordShow2, setpassword2] = React.useState(false);
 
@@ -69,14 +77,15 @@ const Signup = () => {
       ...values,
       [event.target.name]: event.target.value,
     });
+    console.log(values);
   };
   var data = new FormData();
-  data.append("username", `${values.name}`);
+  data.append("teaaccher", `${teacher}`);
   data.append("password", `${values.password}`);
   data.append("email", `${values.email}`);
   var config = {
     method: "post",
-    url: "http://localhost:8000/api/register/",
+    url: "http://e038-1-22-101-132.ngrok.io/account/signup/",
     headers: {
       "Content-Type": "application/json",
     },
@@ -84,7 +93,12 @@ const Signup = () => {
   };
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: "100vh" }} style={{padding:'10px 50px'}}>
+      <Grid
+        container
+        component="main"
+        sx={{ height: "100vh" }}
+        style={{ padding: "10px 50px" }}
+      >
         <CssBaseline />
         <Grid
           item
@@ -102,7 +116,6 @@ const Signup = () => {
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
-          
         />
         <Grid item xs={12} sm={8} md={5} elevation={6} square>
           <Box
@@ -135,9 +148,6 @@ const Signup = () => {
               }}
               validate={(values) => {
                 const errors = {};
-                if (!values.name) {
-                  errors.name = "Name is required";
-                }
                 if (!values.password) {
                   errors.password = "Password is required";
                 } else if (values.password.length < 8) {
@@ -181,40 +191,6 @@ const Signup = () => {
                   noValidate
                   sx={{ mt: 1 }}
                 >
-                  <TextField
-                    id="outlined-basic"
-                    label="Name"
-                    color="primary"
-                    type="text"
-                    autoFocus
-                    // error={errors.name}
-                    name="name"
-                    required
-                    variant="outlined"
-                    value={values.name}
-                    fullWidth
-                    autoComplete="off"
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <PermContactCalendarIcon />
-                        </InputAdornment>
-                      ),
-                    }}
-                    onBlur={handleBlur}
-                    onChange={(event) => {
-                      handleChange(event);
-                      handleChanges(event);
-                    }}
-                  />
-                  {errors.name ? (
-                    <FormHelperText error>{errors.name}</FormHelperText>
-                  ) : (
-                    <FormHelperText style={{ visibility: "hidden" }}>
-                      ..
-                    </FormHelperText>
-                  )}
-                  <br />
                   <TextField
                     id="outlined-basic"
                     label="Email"
@@ -350,33 +326,52 @@ const Signup = () => {
                         </FormHelperText>
                       )}
                     </Grid>
+                    <br /><br/>
+                    <FormControl
+                      style={{ width: "420px", transform: "translateX(17px)" }}
+                      fullWidth
+                    >
+                      <InputLabel id="demo-simple-select-label">
+                        Role
+                      </InputLabel>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={teacher}
+                        label="Role"
+                        onChange={(e) =>setRole(e.target.value)}
+                      >
+                        <MenuItem value={true}>Teacher</MenuItem>
+                        <MenuItem value={false}>Student</MenuItem>
+                      </Select>
+                    </FormControl>
                   </Grid>
-
                   <Button
                     type="submit"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 ,bgcolor :"#2888ff"}}
-                    style={{fontSize:"1.1rem"}}
+                    sx={{ mt: 3, mb: 2, bgcolor: "#2888ff" }}
+                    style={{ fontSize: "1.1rem" }}
                     component={motion.div}
                     whileHover={{
-                    scale: 1.08,
-                    backgroundColor:"#2888ff",
-                    textShadow: "0 0 8px rgb(255,255,255)",
-                    transition: { duration: 0.3 },
+                      scale: 1.08,
+                      backgroundColor: "#2888ff",
+                      textShadow: "0 0 8px rgb(255,255,255)",
+                      transition: { duration: 0.3 },
                     }}
                     onClick={(e) => {
                       console.log(errors);
+                      console.log(teacher);
                       if (
                         !errors.email &&
-                        !errors.name &&
                         !errors.password &&
                         !errors.password2
                       ) {
                         axios(config)
                           .then(function (response) {
                             console.log(JSON.stringify(response.data));
-                            history.push('/home');
+                            
+                            history.push("/home");
                           })
                           .catch(function (error) {
                             console.log(error);
@@ -399,17 +394,29 @@ const Signup = () => {
                   </Button>
                   <Grid container>
                     <Grid item xs={12} md={12}>
-                    <Button 
-                      color="primary" 
-                      variant="outlined" 
-                      fullWidth 
-                      style={{marginBottom:"3vh"}}
-                      component={motion.div}
-                      whileHover={{
-                      scale: 1.08,
-                      textShadow: "0 0 8px rgb(255,255,255)",
-                      transition: { duration: 0.3 },
-                      }}><Link to="/" style={{textDecoration:"none",fontSize:"1rem" , color:"blue"}}>Have an account? Login</Link></Button>
+                      <Button
+                        color="primary"
+                        variant="outlined"
+                        fullWidth
+                        style={{ marginBottom: "3vh" }}
+                        component={motion.div}
+                        whileHover={{
+                          scale: 1.08,
+                          textShadow: "0 0 8px rgb(255,255,255)",
+                          transition: { duration: 0.3 },
+                        }}
+                      >
+                        <Link
+                          to="/login"
+                          style={{
+                            textDecoration: "none",
+                            fontSize: "1rem",
+                            color: "blue",
+                          }}
+                        >
+                          Have an account? Login
+                        </Link>
+                      </Button>
                     </Grid>
                   </Grid>
                   <Copyright sx={{ mt: 5 }} />

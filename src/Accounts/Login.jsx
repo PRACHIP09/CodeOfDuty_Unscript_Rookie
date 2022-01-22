@@ -40,7 +40,7 @@ function Copyright(props) {
       style={{fontSize:"1.1rem"}}
     >
       {"Copyright © "}
-      <Link color="inherit" style={{color:"#fe6c77" , textDecoration:"none"}}>Your Website </Link>
+      <Link color="inherit" style={{color:"#fe6c77" , textDecoration:"none"}}>Code of duty</Link>
       {new Date().getFullYear()}
       {"."}
     </Typography>
@@ -108,7 +108,7 @@ const Login = () => {
           initial={{ x: "-100vw" }}
           animate={{ x: 0 }}
         >
-          <Button onClick={handleDrawerOpen}>Admin</Button>
+          <Button size='small' variant='contained' color='success' style={{transform:'translate(-180px,20px)',backgroundColor:'#fe6c77'}} onClick={handleDrawerOpen}>Admin ?</Button>
           <Box
             sx={{
               my: 8,

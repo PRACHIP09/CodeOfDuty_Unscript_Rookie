@@ -52,6 +52,7 @@ const CourseLayout = () => {
     console.log(feedback, stars);
   };
 
+  
   return (
     <div>
       <CategoryTable />
