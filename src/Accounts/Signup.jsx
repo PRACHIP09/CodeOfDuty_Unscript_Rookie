@@ -398,11 +398,6 @@ const Signup = () => {
                     Sign In
                   </Button>
                   <Grid container>
-                    {/*<Grid item>
-                      <Link to="/" variant="body2">
-                        {"Don't have an account? Login"}
-                      </Link>
-                    </Grid>*/}
                     <Grid item xs={12} md={12}>
                     <Button 
                       color="primary" 

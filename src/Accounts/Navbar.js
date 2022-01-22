@@ -7,18 +7,17 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import { Link } from "react-scroll";
+// import { Link } from "react-scroll";
 const pages = [
-  "Prizes",
-  "Domain",
-  "Timeline",
-  "Guidelines",
-  "Sponsors",
-  "FAQS",
-  "Contact Us",
+  "Login",
+  "Signin",
+  "Home",
+  "Profile",
+  "Contactus",
+  "Courses",
 ];
 // const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -157,7 +156,7 @@ const Navbar = () => {
             alignContent="center"
           >
             {pages.map((page) => (
-              <Link to={page} spy={true} smooth={true}>
+              <Link to={page} style={{textDecoration:'none'}}>
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}

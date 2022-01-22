@@ -8,29 +8,36 @@ import Footer from "./Extra/Footer";
 import StudentHome from "./Student/StudentHome/StudentHome";
 import Admin from "./Accounts/Admin";
 import TeacherHomePage from "./Teacher/TeacherHomePage";
+import CourseLayout from "./Student/StudentCourses/CourseLayout";
 function App() {
   return (
     <Router>
       <div className="App">
         <Switch>
-          <Route path="/" exact>
+          <Route path="/login" exact>
             <Login />
           </Route>
           <Route path="/signin">
             <Signup />
           </Route>
-
-          <Route path="/homeStudent">
+          <Route path="/profile">
+            
+          </Route>
+          <Route path="/home">
             <Navbar />
             <StudentHome />
             {/* <ContactUs /> */}
             {/* <Footer /> */}
           </Route>
+          <Route path="/courses">
+            <Navbar />
+            <CourseLayout />
+          </Route>
           <Route path="/admin">
-            <Admin/>
+            <Admin />
           </Route>
           <Route path="/teacher">
-            <TeacherHomePage/>
+            <TeacherHomePage />
           </Route>
         </Switch>
       </div>
