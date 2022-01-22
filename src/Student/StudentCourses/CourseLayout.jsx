@@ -1,25 +1,35 @@
-import { Grid, 
-  Paper, 
-  Button, 
-  Tooltip, 
-  Drawer , 
+import {
+  Grid,
+  Paper,
+  Button,
+  Tooltip,
+  Drawer,
   TextField,
-InputAdornment,
+  InputAdornment,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import CategoryTable from "./CategoryTable";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import Rating from "@mui/material/Rating";
 import SignalCellular4BarOutlinedIcon from "@mui/icons-material/SignalCellular4BarOutlined";
 import SignalCellular1BarOutlinedIcon from "@mui/icons-material/SignalCellular1BarOutlined";
 import SignalCellular3BarOutlinedIcon from "@mui/icons-material/SignalCellular3BarOutlined";
-import StarIcon from '@mui/icons-material/Star';
-import close from '../../Images/close.png';
+import StarIcon from "@mui/icons-material/Star";
+import close from "../../Images/close.png";
 import "./course.css";
+import { Link } from "react-router-dom";
 var difficult = "hard";
 const CourseLayout = () => {
   const [enroll, setEnroll] = useState(false);
   const [open, setOpen] = React.useState(false);
+
+  // move page to top
+  const onTop = () => {
+    window.scrollTo(0, 0);
+  };
+  useEffect(() => {
+    onTop();
+  }, []);
   const [openfdbck, setOpenfdbck] = React.useState(false);
   const handleClick = () => {
     setOpen(true);
@@ -27,20 +37,20 @@ const CourseLayout = () => {
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
-    };
-  }
-    const handleDrawerOpenFdbck = () => {
-      setOpenfdbck(true);
-      };
-    const handleDrawerCloseFdbck = () => {
-      setOpenfdbck(false);
-    };
-    const [feedback, setFeedback] = useState("");
-    const [stars, setStars] = useState(3);
-    const [hover, setHover] = React.useState(-1);
-    const submit = () =>{
-      console.log(feedback,stars);
     }
+  };
+  const handleDrawerOpenFdbck = () => {
+    setOpenfdbck(true);
+  };
+  const handleDrawerCloseFdbck = () => {
+    setOpenfdbck(false);
+  };
+  const [feedback, setFeedback] = useState("");
+  const [stars, setStars] = useState(3);
+  const [hover, setHover] = React.useState(-1);
+  const submit = () => {
+    console.log(feedback, stars);
+  };
 
   return (
     <div>
@@ -70,20 +80,37 @@ const CourseLayout = () => {
               &#8377; 100
             </span>
             <span>
-
-            {difficult == "easy" ? (
-              <Tooltip title="Basic level">
-                <SignalCellular1BarOutlinedIcon color="warning" style={{fontSize:'2rem',transform:'translate(25px,5px)' }} />
-              </Tooltip>
-            ) : difficult == "hard" ? (
-              <Tooltip title="Difficult level">
-              <SignalCellular4BarOutlinedIcon color="warning" style={{fontSize:'2rem',transform:'translate(25px,5px)' }}/>
-              </Tooltip>
-            ) : (
-              <Tooltip title="Intermediate level">
-              <SignalCellular3BarOutlinedIcon color="warning" style={{fontSize:'2rem',transform:'translate(25px,5px)' }}/>
-              </Tooltip>
-            )}
+              {difficult == "easy" ? (
+                <Tooltip title="Basic level">
+                  <SignalCellular1BarOutlinedIcon
+                    color="warning"
+                    style={{
+                      fontSize: "2rem",
+                      transform: "translate(25px,5px)",
+                    }}
+                  />
+                </Tooltip>
+              ) : difficult == "hard" ? (
+                <Tooltip title="Difficult level">
+                  <SignalCellular4BarOutlinedIcon
+                    color="warning"
+                    style={{
+                      fontSize: "2rem",
+                      transform: "translate(25px,5px)",
+                    }}
+                  />
+                </Tooltip>
+              ) : (
+                <Tooltip title="Intermediate level">
+                  <SignalCellular3BarOutlinedIcon
+                    color="warning"
+                    style={{
+                      fontSize: "2rem",
+                      transform: "translate(25px,5px)",
+                    }}
+                  />
+                </Tooltip>
+              )}
             </span>
 
             {!enroll ? (
@@ -107,7 +134,7 @@ const CourseLayout = () => {
                 Expel
               </Button>
             )}
-           
+
             <br />
             <br />
 
@@ -116,17 +143,22 @@ const CourseLayout = () => {
               defaultValue={2.5}
               precision={0.5}
               readOnly
-              style={{float:'left',margin:"5px"}}
+              style={{ float: "left", margin: "5px" }}
             />
-             <Tooltip
+            <Tooltip
               arrow
               title="Have one to one conversations with our teachers"
             >
-              <Button>
-                <QuestionAnswerIcon />
-              </Button>
+              <Link to="/chat" style={{ textDecoration: "none" }}>
+                <Button>
+                  <QuestionAnswerIcon />
+                </Button>
+              </Link>
             </Tooltip>
-            <Button style={{ fontSize: ".7rem" }} onClick={handleDrawerOpenFdbck}>
+            <Button
+              style={{ fontSize: ".7rem" }}
+              onClick={handleDrawerOpenFdbck}
+            >
               Give your valuable Feedback
             </Button>
           </Paper>
@@ -138,70 +170,96 @@ const CourseLayout = () => {
         sx={{
           width: 500,
           flexShrink: 0,
-          '& .MuiDrawer-paper': {
+          "& .MuiDrawer-paper": {
             width: 500,
-            boxSizing: 'border-box',
+            boxSizing: "border-box",
           },
         }}
         variant="persistent"
         anchor="right"
         open={openfdbck}
       >
-       <img src={close} alt="close" onClick={handleDrawerCloseFdbck} style={{height:"5vh", width:"5vh" , cursor:"pointer" , marginLeft:"80%" , marginTop:"2vh"}}/>
-       <div style={{paddingLeft:"6vh" ,paddingTop:"2vh" , paddingRight:"1vh"}}>
-        <Grid spacing={3}>
-        <div style={{padding:"0 0 5vh 0" , fontSize:"1.5rem" , textAlign:"left" , color:"#141b37"}}>
-        Feedback
-        </div>
-       {/*for feedback*/}
-       <Grid container spacing={3} style={{paddingBottom:"2vh"}}>
-                   <Grid item md={8} sm={8} xs={8}>
-                   <TextField
-                    id="outlined-basic"
-                    label="feedback"
-                    color="primary"
-                    type="text"
-                    name="feedback"
-                    variant="outlined"
-                    value={feedback}
-                    fullWidth
-                    autoComplete='off'
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                         
-                        </InputAdornment>
-                      ),
-                    }}
-                    onChange={(e) => setFeedback(e.target.value)}
-                  />
-                  
-                  </Grid> 
-                </Grid>
-                {/*for notes*/}
-                <Grid container spacing={3} style={{paddingBottom:"2vh"}}>
-                   <Grid item md={8} sm={8} xs={8}>
-                   <Rating
+        <img
+          src={close}
+          alt="close"
+          onClick={handleDrawerCloseFdbck}
+          style={{
+            height: "5vh",
+            width: "5vh",
+            cursor: "pointer",
+            marginLeft: "80%",
+            marginTop: "2vh",
+          }}
+        />
+        <div
+          style={{ paddingLeft: "6vh", paddingTop: "2vh", paddingRight: "1vh" }}
+        >
+          <Grid spacing={3}>
+            <div
+              style={{
+                padding: "0 0 5vh 0",
+                fontSize: "1.5rem",
+                textAlign: "left",
+                color: "#141b37",
+              }}
+            >
+              Feedback
+            </div>
+            {/*for feedback*/}
+            <Grid container spacing={3} style={{ paddingBottom: "2vh" }}>
+              <Grid item md={8} sm={8} xs={8}>
+                <TextField
+                  id="outlined-basic"
+                  label="feedback"
+                  color="primary"
+                  type="text"
+                  name="feedback"
+                  variant="outlined"
+                  value={feedback}
+                  fullWidth
+                  autoComplete="off"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end"></InputAdornment>
+                    ),
+                  }}
+                  onChange={(e) => setFeedback(e.target.value)}
+                />
+              </Grid>
+            </Grid>
+            {/*for notes*/}
+            <Grid container spacing={3} style={{ paddingBottom: "2vh" }}>
+              <Grid item md={8} sm={8} xs={8}>
+                <Rating
                   name="hover-feedback"
                   value={stars}
                   precision={1}
                   onChange={(event, newValue) => {
-                  setStars(newValue);
+                    setStars(newValue);
                   }}
                   onChangeActive={(event, newHover) => {
                     setHover(newHover);
                   }}
-                  emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
-                  />
-                  </Grid> 
-                   </Grid>
-                  <Button
-                    style={{ marginRight:"20vh", textAlign:"center" , width:"40vh" , fontSize:"1rem"}}
-                    variant="contained"
-                    onClick={submit}
-                  >Submit</Button>
-                </Grid>
-                </div>
+                  emptyIcon={
+                    <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+                  }
+                />
+              </Grid>
+            </Grid>
+            <Button
+              style={{
+                marginRight: "20vh",
+                textAlign: "center",
+                width: "40vh",
+                fontSize: "1rem",
+              }}
+              variant="contained"
+              onClick={submit}
+            >
+              Submit
+            </Button>
+          </Grid>
+        </div>
       </Drawer>
     </div>
   );

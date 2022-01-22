@@ -1,15 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto");
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
 .heading {
-  color: #3cf7fb;
+  color: black;
 }
 
 .inputFields input {
   padding: 10px;
   width: 80%;
-  border: 3px #3cf7fb solid;
+  border: 3px rgba(0, 0, 0, 0.836) solid;
   border-radius: 20px;
-  background-color: #000324;
   font-family: "Roboto", sans-serif;
   color: white;
   outline: none;
@@ -17,7 +16,7 @@
 }
 
 .inputFields label {
-  color: white;
+  color: black;
   font-family: 'Merriweather', serif;
   display: block;
   text-align: left;
@@ -36,7 +35,7 @@
   padding: 20px;
 }
 .contact p ,.contact h2{
-  color:white;
+  color:black;
 }
 .contact p{
   font-family: "Roboto", sans-serif;
@@ -44,7 +43,6 @@
 }
 .detail{
   padding: 0 40px;
-  background-color: #000324;
 }
 .map{
   border: 0;

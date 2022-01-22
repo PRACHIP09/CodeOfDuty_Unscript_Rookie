@@ -10,7 +10,7 @@ import Admin from "./Accounts/Admin";
 import TeacherHomePage from "./Teacher/TeacherHomePage";
 import CourseLayout from "./Student/StudentCourses/CourseLayout";
 import StudentProfile from "./Student/StudentProfile";
-//import VideoChat from "./Extra/Video";
+import Chatbot from "./Extra/Chatbot";
 function App() {
   return (
     <Router>
@@ -28,8 +28,7 @@ function App() {
           <Route path="/home">
             <Navbar />
             <StudentHome />
-            {/* <ContactUs /> */}
-            {/* <Footer /> */}
+            <Footer />
           </Route>
           <Route path="/courses">
             <Navbar />
@@ -41,9 +40,13 @@ function App() {
           <Route path="/teacher">
             <TeacherHomePage />
           </Route>
-          {/*<Route path="/video">
-            <VideoChat/>
-  </Route>*/}
+          <Route path="/contactus">
+            <Navbar />
+            <ContactUs />
+          </Route>
+          <Route path='/chat'>
+            <Chatbot/>
+          </Route>
         </Switch>
       </div>
     </Router>
