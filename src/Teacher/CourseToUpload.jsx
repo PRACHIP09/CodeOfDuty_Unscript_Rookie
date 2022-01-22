@@ -84,11 +84,11 @@ const CourseToUpload = () => {
     const handleVideo =async()=>{
       console.log("fromSubmit");
       let resp = await fetch(
-        "https://mini-project-unicode.herokuapp.com/3js/user/register",
+        "http://b5da-1-22-101-132.ngrok.io/course/teacher/file/9/",
         {
           method: "post",
           headers: {
-            "Content-Type": "application/json",
+            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzMTMwOTU4LCJpYXQiOjE2NDI4NzE3NTgsImp0aSI6IjE3MmM2MTk0ODIzMDQxOGE4NTEzOTcyMWFiNmI5YTYzIiwidXNlcl9pZCI6M30.GjCpmxRhs7y1t_-mZEcy0CtuWHAQjt2ukkS47fO0Ors`,
           },
           body: JSON.stringify({
             notes: {category},

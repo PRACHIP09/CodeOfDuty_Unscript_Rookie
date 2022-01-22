@@ -24,7 +24,7 @@ const TeacherHomePage = () => {
     const [openqa, setOpenqa] = React.useState(false);
     const [openfdbck , setOpenfdbck] = React.useState(false);
     const [openprf , setOpenPrf] = React.useState(false);
-    const[loading,setLoading] = useState(false);
+    const [loading,setLoading] = useState(false);
     const [load,setLoad] = useState([]);
     useEffect(() => {
       loadList();

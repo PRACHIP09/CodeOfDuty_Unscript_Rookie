@@ -29,21 +29,7 @@ const Cart = () => {
         },
       }
     );
-    for(i=0;i<result.data.length;i++)
-    {
-      
-      const all = await axios.get(
-        ``,
-        {
-          headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzMTE5NDExLCJpYXQiOjE2NDI4NjAyMTEsImp0aSI6ImRmMDY2NjJlY2M4MzRjODhiMDk4MmRmZWZiNTAzYjA0IiwidXNlcl9pZCI6MTZ9.uCSV0-x-swjH9E3GNMIRojBx9IQiqkww06tj0COxnLs`,
-          },
-        }
-      );
-      
-      
-    }
-  };
+  }
   return (
   <div>
     <Grid container spacing={3} style={{paddingLeft:"2vh" , paddingRight:"2vh" , paddingTop:"2vh"}}>
