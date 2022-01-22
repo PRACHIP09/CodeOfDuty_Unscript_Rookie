@@ -35,9 +35,10 @@ function Copyright(props) {
       color="text.secondary"
       align="center"
       {...props}
+      style={{fontSize:"1.1rem"}}
     >
       {"Copyright © "}
-      <Link color="inherit">Your Website</Link>
+      <Link color="inherit" style={{color:"#fe6c77" , textDecoration:"none"}}>Your Website </Link>
       {new Date().getFullYear()}
       {"."}
     </Typography>
@@ -108,7 +109,7 @@ const Login = () => {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <Avatar sx={{ m: 1, bgcolor: "#fe6c77" }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
@@ -248,7 +249,15 @@ const Login = () => {
                     type="submit"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={{ mt: 3, mb: 2 , bgcolor:"#fe6c77" , boxShadow:"none"}}
+                    component={motion.div}
+                     whileHover={{
+                     backgroundColor:"#fe6c77",
+                     scale: 1.08,
+                     textShadow: "0 0 8px rgb(255,255,255)",
+                     transition: { duration: 0.3 },
+                     }}
+                    style={{fontSize:"1.1rem"}}
                     onClick={(e) => {
                       console.log(errors);
                       if (
@@ -282,16 +291,35 @@ const Login = () => {
                     Submit
                   </Button>
                   <Grid container>
-                    <Grid item xs>
-                      <Link href="#" variant="body2">
+                    <Grid item xs={12} md={12}>
+                      {/*<Link href="#" variant="body2">
                         Forgot password?
-                      </Link>
+                      </Link>*/}
+                      <Button 
+                      color="primary" 
+                      variant="outlined" 
+                      fullWidth 
+                      style={{marginBottom:"3vh"}}
+                      component={motion.div}
+                      whileHover={{
+                      scale: 1.08,
+                      textShadow: "0 0 8px rgb(255,255,255)",
+                      transition: { duration: 0.3 },
+                      }}><Link to="#" style={{textDecoration:"none",fontSize:"1rem" , color:"blue"}}>Forgot Password ?</Link></Button>
                     </Grid>
-                    <Grid item>
-                      <br />
-                      <Link to="/signin" variant="body2">
+                    <Grid item xs={12} md={12}>
+                      {/*<Link to="/signin" variant="body2">
                         {"Already have an account ? Signin"}
-                      </Link>
+                    </Link>*/}
+                     <Button color="primary" 
+                     variant="outlined" 
+                     fullWidth
+                     component={motion.div}
+                     whileHover={{
+                     scale: 1.08,
+                     textShadow: "0 0 8px rgb(255,255,255)",
+                     transition: { duration: 0.3 },
+                     }}><Link to="/signin" style={{textDecoration:"none" , fontSize:"1rem" ,color:"blue"}}>Don't have an account ? Sign Up</Link></Button>
                     </Grid>
                   </Grid>
                   <Copyright sx={{ mt: 5 }} />
@@ -305,6 +333,7 @@ const Login = () => {
           xs={false}
           sm={4}
           md={7}
+          spacing={3}
           sx={{
             backgroundImage: `url(${pic})`,
             backgroundRepeat: "no-repeat",

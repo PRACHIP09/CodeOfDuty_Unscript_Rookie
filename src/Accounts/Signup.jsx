@@ -35,9 +35,10 @@ function Copyright(props) {
       color="text.secondary"
       align="center"
       {...props}
+      style={{fontSize:"1.1rem"}}
     >
       {"Copyright © "}
-      <Link color="inherit">Your Website</Link>
+      <Link color="inherit" style={{color:"blue" , textDecoration:"none"}}>Your Website </Link>
       {new Date().getFullYear()}
       {"."}
     </Typography>
@@ -90,6 +91,7 @@ const Signup = () => {
           xs={false}
           sm={4}
           md={7}
+          padding={3}
           sx={{
             backgroundImage: `url(${bulbs})`,
             backgroundRepeat: "no-repeat",
@@ -112,7 +114,7 @@ const Signup = () => {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <Avatar sx={{ m: 1, bgcolor: "#2888ff" }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
@@ -354,7 +356,15 @@ const Signup = () => {
                     type="submit"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={{ mt: 3, mb: 2 ,bgcolor :"#2888ff"}}
+                    style={{fontSize:"1.1rem"}}
+                    component={motion.div}
+                    whileHover={{
+                    scale: 1.08,
+                    backgroundColor:"#2888ff",
+                    textShadow: "0 0 8px rgb(255,255,255)",
+                    transition: { duration: 0.3 },
+                    }}
                     onClick={(e) => {
                       console.log(errors);
                       if (
@@ -388,10 +398,23 @@ const Signup = () => {
                     Sign In
                   </Button>
                   <Grid container>
-                    <Grid item>
+                    {/*<Grid item>
                       <Link to="/" variant="body2">
                         {"Don't have an account? Login"}
                       </Link>
+                    </Grid>*/}
+                    <Grid item xs={12} md={12}>
+                    <Button 
+                      color="primary" 
+                      variant="outlined" 
+                      fullWidth 
+                      style={{marginBottom:"3vh"}}
+                      component={motion.div}
+                      whileHover={{
+                      scale: 1.08,
+                      textShadow: "0 0 8px rgb(255,255,255)",
+                      transition: { duration: 0.3 },
+                      }}><Link to="/" style={{textDecoration:"none",fontSize:"1rem" , color:"blue"}}>Have an account? Login</Link></Button>
                     </Grid>
                   </Grid>
                   <Copyright sx={{ mt: 5 }} />

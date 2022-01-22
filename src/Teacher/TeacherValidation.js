@@ -2,7 +2,9 @@ const Validation = (value) => {
     console.log(value);
 
     let errors={};
-
+    const emailRegex = /\S+@\S+\.\S+/;
+    const passwordRegex= /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+    const numberRegex=/^[0-9]+$/
     // course name
     if(!value.name ){
          errors.name="Name is required"
@@ -10,7 +12,24 @@ const Validation = (value) => {
      else{
          errors.name=''
      }
-
+     // email
+    if(!value.email){
+        errors.email="Email is required"
+     }else if(!emailRegex.test(value.email)){
+        errors.email='Email is invalid'
+     }
+     else{
+         errors.email=''
+     }
+     // phone Number
+   
+    if(!numberRegex.test(value.phone)){
+        errors.phone="Invalid Phone Number"
+    }else if(value.phone.length!==10){
+        errors.phone="Invalid Phone Number"
+    } else{
+        errors.phone=''
+    }
     // description
     if(!value.description){
        errors.description="Description is required"
