@@ -10,8 +10,20 @@ const Validation = (value) => {
          errors.name="Name is required"
      }
      else{
-         errors.name=''
+         errors.course=''
      }
+     if(!value.course ){
+        errors.course="Name is required"
+    }
+    else{
+        errors.course=''
+    }
+    if(!value.lectno ){
+        errors.lectno="Lecture No is required"
+    }
+    else{
+        errors.lectno=''
+    }
      // email
     if(!value.email){
         errors.email="Email is required"

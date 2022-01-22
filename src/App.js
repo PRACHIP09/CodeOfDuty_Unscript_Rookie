@@ -9,6 +9,7 @@ import StudentHome from "./Student/StudentHome/StudentHome";
 import Admin from "./Accounts/Admin";
 import TeacherHomePage from "./Teacher/TeacherHomePage";
 import CourseLayout from "./Student/StudentCourses/CourseLayout";
+import StudentProfile from "./Student/StudentProfile";
 import Chatbot from "./Extra/Chatbot";
 import DomainCourse from "./Student/StudentCourses/DomainCourse";
 import Verification from "./Accounts/Verification";
@@ -23,7 +24,9 @@ function App() {
           <Route path="/signin">
             <Signup />
           </Route>
-          <Route path="/profile"></Route>
+          <Route path="/profile">
+          <StudentProfile/>
+          </Route>
           <Route path="/home">
             <Navbar />
             <StudentHome />
