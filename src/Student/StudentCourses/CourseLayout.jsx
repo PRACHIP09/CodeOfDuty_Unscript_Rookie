@@ -51,7 +51,28 @@ const CourseLayout = () => {
   const submit = () => {
     console.log(feedback, stars);
   };
-
+  const handleSubmission =async()=>{
+    console.log("fromSubmit");
+    const formData = new FormData();
+    formData.append("comment", feedback);
+    formData.append("rating", stars);
+    await fetch(
+      `http://b5da-1-22-101-132.ngrok.io/course/post-review/1/`,
+      {
+        method: "POST",
+        body: formData,
+        headers: {
+          Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzMTM3NTMyLCJpYXQiOjE2NDI4NzgzMzIsImp0aSI6IjM5ZDVjOTE2ZTVlNjRjN2E5Yzk3MmI5YjJlNTc4YWQ1IiwidXNlcl9pZCI6NX0.RGVcy20eyM267Q0rjXQeNZK0b2LbWU3cEpfh-az-QMI`,
+        },
+      }
+    )
+      .then((result) => {
+        console.log(result);
+      })
+      .catch(() => {
+        alert("Error in the Code");
+      });
+  }
   
   return (
     <div>
@@ -255,7 +276,7 @@ const CourseLayout = () => {
                 fontSize: "1rem",
               }}
               variant="contained"
-              onClick={submit}
+              onClick={handleSubmission}
             >
               Submit
             </Button>

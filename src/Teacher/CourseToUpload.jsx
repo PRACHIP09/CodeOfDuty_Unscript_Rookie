@@ -17,7 +17,7 @@ import BeenhereIcon from '@mui/icons-material/Beenhere';
 import Validation from './TeacherValidation';
 import {useHistory} from 'react-router-dom';
 import close from '../Images/close.png';
-const CourseToUpload = ({id}) => {
+const CourseToUpload = () => {
     const history = useHistory();
     const [open, setOpen] = React.useState(false);
     const [category,setCategory] = useState("");
@@ -38,6 +38,7 @@ const CourseToUpload = ({id}) => {
         description: "",
         lectno:"",
         course:"",
+        deadline:"",
       });
     const [errors, setErrors] = useState({});
     const [notValid, setCorrectData] = useState(true);
@@ -50,24 +51,27 @@ const CourseToUpload = ({id}) => {
     };
     const handleSubmission =async()=>{
     console.log("fromSubmit");
+    console.log(level);
+    console.log(values);
     let response = await fetch(
-      "https://mini-project-unicode.herokuapp.com/3js/user/register",
+      "http://b5da-1-22-101-132.ngrok.io/course/teacher/9/",
       {
         method: "post",
         headers: {
-          "Content-Type": "application/json",
+          Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzMTMwOTU4LCJpYXQiOjE2NDI4NzE3NTgsImp0aSI6IjE3MmM2MTk0ODIzMDQxOGE4NTEzOTcyMWFiNmI5YTYzIiwidXNlcl9pZCI6M30.GjCpmxRhs7y1t_-mZEcy0CtuWHAQjt2ukkS47fO0Ors`,
         },
         body: JSON.stringify({ 
           name: values.name,
           description: values.description,
           price: values.price,
-          category: {category},
-          image:{image},
-          level:{level},
+          category: category,
+          deadline:values.deadline,
+          level: level,
 
         }),
       }
     );
+    console.log(response.data)
     let data = await response.json();
        // console.log(response.status)
       if (response.status === 201) {
@@ -79,7 +83,7 @@ const CourseToUpload = ({id}) => {
     }
     const handleVideo =async()=>{
       console.log("fromSubmit");
-      let response = await fetch(
+      let resp = await fetch(
         "https://mini-project-unicode.herokuapp.com/3js/user/register",
         {
           method: "post",
@@ -95,9 +99,9 @@ const CourseToUpload = ({id}) => {
           }),
         }
       );
-      let data = await response.json();
+      let data = await resp.json();
          // console.log(response.status)
-        if (response.status === 201) {
+        if (resp.status === 201) {
           console.log(data);
           console.log(data.token);
         } else {
@@ -108,8 +112,8 @@ const CourseToUpload = ({id}) => {
   <div style={{paddingLeft:"6vh" ,paddingTop:"2vh" , paddingRight:"1vh"}}>
       <Grid spacing={3}>
                 
-                <div style={{padding:"0 0 20px 0" , fontSize:"1.5rem" , textAlign:"left" , color:"#141b37"}}>
-                Upload New Courses {id}
+                <div style={{paddingTop:"-1vh" , fontSize:"1.3rem" , textAlign:"left" , color:"#141b37"}}>
+                Upload New Courses
                 </div>
                 {/* for name*/}
                 <Grid container spacing={3} style={{paddingBottom:"2vh"}}>
@@ -211,23 +215,34 @@ const CourseToUpload = ({id}) => {
                    <Grid item md={8} sm={8} xs={8}>
                    <TextField
                     id="outlined-basic"
+                    label="DeadLine Date"
                     color="primary"
-                    type="file"
-                    name="image"
+                    type="text"
+                    error={errors.deadline}
+                    name="deadline"
                     variant="outlined"
+                    value={values.deadline}
                     fullWidth
                     autoComplete='off'
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
-                          <VideoLibraryIcon color="primary" />
+                          <AttachMoneyIcon color="primary" />
                         </InputAdornment>
                       ),
                     }}
-                    onChange={(e) => setImage(e.target.files[0])}
+                    onChange={handleChanges}
                   />
+                  {errors.deadline ? (
+                    <FormHelperText error>{errors.deadline}</FormHelperText>
+                  ) : (
+                    <FormHelperText style={{ visibility: "hidden" }}>
+                      ..
+                    </FormHelperText>
+                  )}
                   </Grid> 
                 </Grid>
+                
                 {/*for level*/}
                 <Grid container spacing={3} style={{paddingBottom:"2vh"}}>
                    <Grid item md={8} sm={8} xs={8}>

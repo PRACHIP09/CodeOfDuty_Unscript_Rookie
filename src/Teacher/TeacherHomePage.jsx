@@ -16,8 +16,6 @@ import add from '../Images/add.png';
 import close from '../Images/close.png'
 import AlreadyUploaded from './AlreadyUploaded';
 import Doubts from './Doubts';
-import user from '../Images/user.png';
-import Profile from './Profile';
 import { motion } from "framer-motion";
 import axios from 'axios';
 import './teacher.css';
@@ -26,11 +24,11 @@ const TeacherHomePage = () => {
     const [openqa, setOpenqa] = React.useState(false);
     const [openfdbck , setOpenfdbck] = React.useState(false);
     const [openprf , setOpenPrf] = React.useState(false);
-    
+    const[loading,setLoading] = useState(false);
     const [load,setLoad] = useState([]);
-    // useEffect(() => {
-    //   loadList();
-    // }, []);
+    useEffect(() => {
+      loadList();
+     }, []);
     const handleDrawerOpen = () => {
     setOpen(true);
     };
@@ -55,18 +53,19 @@ const TeacherHomePage = () => {
     const handleDrawerClosePrf = () => {
     setOpenPrf(false);
     };
-const loadList = async () => {
+    const loadList = async () => {
       const result = await axios.get(
-        ``,
+        `https://b5da-1-22-101-132.ngrok.io/course/teacher/0/`,
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzMTE5NDExLCJpYXQiOjE2NDI4NjAyMTEsImp0aSI6ImRmMDY2NjJlY2M4MzRjODhiMDk4MmRmZWZiNTAzYjA0IiwidXNlcl9pZCI6MTZ9.uCSV0-x-swjH9E3GNMIRojBx9IQiqkww06tj0COxnLs`,
+            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzMTMwOTU4LCJpYXQiOjE2NDI4NzE3NTgsImp0aSI6IjE3MmM2MTk0ODIzMDQxOGE4NTEzOTcyMWFiNmI5YTYzIiwidXNlcl9pZCI6M30.GjCpmxRhs7y1t_-mZEcy0CtuWHAQjt2ukkS47fO0Ors`,
           },
         }
       );
+      console.log(result.data);
       setLoad(result.data);
     };
-
+    
   return (
   <div style={{padding:"6vh"}} >
         <Grid container spacing={3} >
@@ -85,6 +84,8 @@ const loadList = async () => {
         <u>Course Uploaded</u><br/><div style={{padding:"3vh" , fontWeight:"700" , fontSize:"1.5rem" , color:"#00ACEA" , alignItems:"Left"}}><i>"In learning you will teach and in teaching you will learn"</i></div>
         </div>
         <Grid container spacing={3} >
+         {load.map((index)=>(
+        <>
         <Grid item md={3} xs={12} sm={6}>
             <Card
             component={motion.div}
@@ -101,13 +102,13 @@ const loadList = async () => {
               src={blog}
               style={{marginBottom:"3vh"}}
             />
-            <Typography gutterBottom variant="h5" component="div" style={{marginBottom:"2vh" , color:"blue" , fontWeight:"600"}}>AI-ML</Typography>
-            <Typography gutterBottom  component="div" style={{padding:"2vh"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Typography>
+            <Typography gutterBottom variant="h5" component="div" style={{marginBottom:"2vh" , color:"blue" , fontWeight:"600"}}>{index.name} &ensp; - &ensp; {index.level}</Typography>
+            <Typography gutterBottom  component="div" style={{padding:"2vh",height:"4vh"}}>{index.category}</Typography>
             <hr/><br/>
             <CardContent>
                 <Grid container spacing={3}>
                     <Grid items md={6} xs={6}>
-                       <Button style={{fontSize:"1.1rem"}}><PeopleIcon sx={{fontSize:35}}/>78</Button>
+                       <Button style={{fontSize:"1.1rem"}}><PeopleIcon sx={{fontSize:35}}/>{index.no_enrolled}</Button>
                     </Grid>
                     <Grid items md={3} xs={3}>
                     <img src={feedback} alt={feedback} onClick={handleDrawerOpenFdbck} style={{height:"6vh", width:"6vh" , cursor:"pointer" }}/>   
@@ -119,6 +120,8 @@ const loadList = async () => {
             </CardContent>
             </Card>
         </Grid>
+      </>
+         ))}
         </Grid>
         <Drawer
         sx={{
@@ -134,8 +137,8 @@ const loadList = async () => {
         open={open}
       >
        <img src={close} alt="close" onClick={handleDrawerClose} style={{height:"5vh", width:"5vh" , cursor:"pointer" , marginLeft:"80%" , marginTop:"2vh"}}/>
-       <CourseToUpload id="8"/>
-       {/* <CourseToUpload id={user.id}/>  */}
+       
+       <CourseToUpload/> 
       </Drawer>
       <Drawer
         sx={{
@@ -153,6 +156,7 @@ const loadList = async () => {
        <img src={close} alt="close" onClick={handleDrawerCloseQa} style={{height:"5vh", width:"5vh" , cursor:"pointer" , marginLeft:"80%" , marginTop:"2vh"}}/>
        <Doubts/> 
       </Drawer>
+      
       <Drawer
         sx={{
           width: 500,
@@ -167,7 +171,7 @@ const loadList = async () => {
         open={openfdbck}
       >
        <img src={close} alt="close" onClick={handleDrawerCloseFdbck} style={{height:"5vh", width:"5vh" , cursor:"pointer" , marginLeft:"80%" , marginTop:"2vh"}}/>
-       <AlreadyUploaded/> 
+       <AlreadyUploaded id="1"/> 
       </Drawer>
       
   </div>

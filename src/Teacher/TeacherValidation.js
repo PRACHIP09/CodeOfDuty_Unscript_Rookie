@@ -24,6 +24,13 @@ const Validation = (value) => {
     else{
         errors.lectno=''
     }
+    if(!value.deadline ){
+        errors.deadline="Deadline  is required"
+    }
+    else{
+        errors.deadline=''
+    }
+    
      // email
     if(!value.email){
         errors.email="Email is required"
