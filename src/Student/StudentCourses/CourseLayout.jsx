@@ -275,34 +275,34 @@ const CourseLayout = () => {
                   <br />
                   <br />
 
-                  <Rating
-                    name="half-rating-read"
-                    defaultValue={2.5}
-                    precision={0.5}
-                    readOnly
-                    style={{ float: "left", margin: "5px" }}
-                  />
-                  <Tooltip
-                    arrow
-                    title="Have one to one conversations with our teachers"
-                  >
-                    <Link to="/chat" style={{ textDecoration: "none" }}>
-                      <Button>
-                        <QuestionAnswerIcon />
-                      </Button>
-                    </Link>
-                  </Tooltip>
-                  <Button
-                    style={{ fontSize: ".7rem" }}
-                    onClick={handleDrawerOpenFdbck}
-                  >
-                    Give your valuable Feedback
-                  </Button>
-                </Paper>
-              </Grid>
-            );
-          })}
-          {/* <Grid item sm={4}>
+                <Rating
+                  name="half-rating-read"
+                  defaultValue={2.5}
+                  precision={0.5}
+                  readOnly
+                  style={{ float: "left", margin: "5px" }}
+                />
+                <Tooltip
+                  arrow
+                  title="Have one to one conversations with our teachers"
+                >
+                  <Link to="/faqs" style={{ textDecoration: "none" }}>
+                    <Button>
+                      <QuestionAnswerIcon />
+                    </Button>
+                  </Link>
+                </Tooltip>
+                <Button
+                  style={{ fontSize: ".7rem" }}
+                  onClick={handleDrawerOpenFdbck}
+                >
+                  Give your valuable Feedback
+                </Button>
+              </Paper>
+            </Grid>
+          );
+        })}
+        {/* <Grid item sm={4}>
           <Paper elevation={2} className="courseBox">
             <img
               src="https://image.freepik.com/free-vector/people-creating-together-new-app-laptop_23-2148683052.jpg"
