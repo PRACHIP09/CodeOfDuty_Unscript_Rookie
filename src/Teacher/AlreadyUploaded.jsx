@@ -1,9 +1,10 @@
 import React,{useEffect,useState} from 'react';
 import axios from 'axios';
 import {
-  Grid,Table,TableCell,TableRow,TableBody,TableContainer,TableHead} from '@mui/material'
-const AlreadyUploaded = ({id}) => {
-   
+  Grid,Table,TableCell,TableRow,TableBody,TableContainer,TableHead} from '@mui/material';
+import Swal from "sweetalert2";
+const AlreadyUploaded = () => {
+  const id = localStorage.getItem("id");
   const [load,setLoad] = useState([]);
    useEffect(() => {
      loadList();
@@ -18,6 +19,20 @@ const AlreadyUploaded = ({id}) => {
       }
     );
     console.log(result.data);
+    if(result.data.length==0)
+    {
+      Swal.fire({
+        icon: "error",
+        title: "Oops",
+        text: "No reviews visible",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
+    }
     setLoad(result.data);
   };
   return (

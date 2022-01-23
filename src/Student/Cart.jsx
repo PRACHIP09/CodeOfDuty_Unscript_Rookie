@@ -6,6 +6,8 @@ import { Grid ,
   CardContent,
   Drawer,
   Button, 
+  TextField,
+  InputAdornment,
   Tooltip} from '@mui/material';
 import doubts from '../Images/doubts.png';
 import feedback from '../Images/feedback.png';
@@ -32,33 +34,64 @@ const Cart = () => {
   }
   return (
   <div>
+    
     <Grid container spacing={3} style={{paddingLeft:"2vh" , paddingRight:"2vh" , paddingTop:"2vh"}}>
-            <Grid item sm={9} xs={12} md={9}>
-            <Card>
-            
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              height="220"
-              src={blog}
-              style={{marginBottom:"3vh"}}
-            />
-            <Typography gutterBottom variant="h5" component="div" style={{marginBottom:"2vh" , color:"blue" , fontWeight:"600"}}>AI-ML</Typography>
-            <Typography gutterBottom  component="div" style={{padding:"2vh"}}>Lorem ipsum dolor </Typography>
-            <hr/><br/>
-            <CardContent>
-                <Grid container spacing={3}>
-                    <Grid items md={6} xs={6}>
-                       <Button style={{fontSize:"1.1rem"}} ><FormatListNumberedIcon sx={{fontSize:35}}/> - 78</Button>
-                    </Grid>
-                    <Grid items md={3} xs={3}>
-                    </Grid>
-                    <Grid items md={3} xs={3}>
-                    <img src={doubts} alt={doubts} style={{height:"6vh", width:"6vh" , cursor:"pointer"}} />
-                    </Grid>
+        
+            <Grid item sm={12} xs={12} md={12} style={{paddingBottom:"3vh"}}>
+                  <TextField
+                    id="filled-read-only-input"
+                    color="primary"
+                    type="text"
+                    name="price"
+                    variant="filled"
+                    value="price"
+                    fullWidth
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
                 </Grid>
-            </CardContent>
-            </Card>
+                  <Grid item sm={12} xs={12} md={12} style={{paddingBottom:"3vh"}}>
+                  <TextField
+                    id="filled-read-only-input"
+                    color="primary"
+                    type="text"
+                    name="price"
+                    variant="filled"
+                    value="price"
+                    fullWidth
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                  </Grid>
+                  <Grid item sm={12} xs={12} md={12} style={{paddingBottom:"3vh"}}>
+                  <TextField
+                    id="filled-read-only-input"
+                    color="primary"
+                    type="text"
+                    name="price"
+                    variant="filled"
+                    value="price"
+                    fullWidth
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                  
+            
             </Grid>
       </Grid>  
   </div>);

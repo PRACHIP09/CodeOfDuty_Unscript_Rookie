@@ -58,11 +58,12 @@ const StudentProfile = () => {
       <br/><div style={{padding:"3vh" , fontWeight:"700" , fontSize:"1.5rem" , color:"#00ACEA" , alignItems:"Left"}}><i>"Education Must Go on !!"</i></div>
       </div>
     <Grid container spacing={3} style={{paddingLeft:"2vh" , paddingRight:"2vh" , paddingTop:"2vh"}}>
-    <div className="heading" style={{padding:"3vh" , fontWeight:"700" , fontSize:"1.7rem" , color:"#00ACEA" , alignItems:"Left"}}>
-    <u>My Courses</u><br/><div style={{padding:"3vh" , fontWeight:"700" , fontSize:"1.5rem" , color:"#00ACEA" , alignItems:"Left" , paddingLeft:"2vh"}}><i>Don't loose momentum get  , Started now </i></div>
-    </div>
+    
+    
       <Grid item xs={12} sm={8} >
-
+      <div className="heading" style={{padding:"3vh" , fontWeight:"700" , fontSize:"1.7rem" , color:"#00ACEA" , alignItems:"Left"}}>
+      <u>My Courses</u><br/>
+      </div>
           <Grid container spacing={3} style={{paddingLeft:"2vh" , paddingRight:"2vh" , paddingTop:"2vh"}}>
           {temp.map((index)=>(
            <Grid item sm={6} md={4} xs={12}>
@@ -99,6 +100,9 @@ const StudentProfile = () => {
       </Grid>
       
       <Grid item  xs={12} sm={4}>
+      <div className="heading" style={{padding:"3vh" , fontWeight:"700" , fontSize:"1.7rem" , color:"#00ACEA" , alignItems:"Left"}}>
+        <u>Payment Gateway</u>
+        </div>
       <Cart/>
       </Grid>
 

@@ -41,7 +41,9 @@ const TeacherHomePage = () => {
     const handleDrawerCloseQa = () => {
     setOpenqa(false);
     };
-    const handleDrawerOpenFdbck = () => {
+    const handleDrawerOpenFdbck = (id) => {
+    console.log(id);
+    localStorage.setItem("id" , id);
     setOpenfdbck(true);
     };
     const handleDrawerCloseFdbck = () => {
@@ -111,7 +113,7 @@ const TeacherHomePage = () => {
                        <Button style={{fontSize:"1.1rem"}}><PeopleIcon sx={{fontSize:35}}/>{index.no_enrolled}</Button>
                     </Grid>
                     <Grid items md={3} xs={3}>
-                    <img src={feedback} alt={feedback} onClick={handleDrawerOpenFdbck} style={{height:"6vh", width:"6vh" , cursor:"pointer" }}/>   
+                    <img src={feedback} alt={feedback} onClick={()=>handleDrawerOpenFdbck(index.id)} style={{height:"6vh", width:"6vh" , cursor:"pointer" }}/>   
                     </Grid>
                     <Grid items md={3} xs={3}>
                     <img src={doubts} alt={doubts} onClick={handleDrawerOpenQa} style={{height:"6vh", width:"6vh" , cursor:"pointer"}} />
@@ -171,7 +173,7 @@ const TeacherHomePage = () => {
         open={openfdbck}
       >
        <img src={close} alt="close" onClick={handleDrawerCloseFdbck} style={{height:"5vh", width:"5vh" , cursor:"pointer" , marginLeft:"80%" , marginTop:"2vh"}}/>
-       <AlreadyUploaded id="1"/> 
+       <AlreadyUploaded/> 
       </Drawer>
       
   </div>

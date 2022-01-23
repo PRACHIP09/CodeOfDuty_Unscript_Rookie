@@ -18,6 +18,7 @@ import StarIcon from "@mui/icons-material/Star";
 import close from "../../Images/close.png";
 import "./course.css";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2"
 var difficult = "hard";
 const CourseLayout = () => {
   const [enroll, setEnroll] = useState(false);
@@ -68,10 +69,24 @@ const CourseLayout = () => {
     )
       .then((result) => {
         console.log(result);
+        if(result.status == 201)
+      {
+        Swal.fire({
+          icon: "success",
+          title: "Feedback received",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+      }
       })
       .catch(() => {
         alert("Error in the Code");
       });
+      
   }
   
   return (
