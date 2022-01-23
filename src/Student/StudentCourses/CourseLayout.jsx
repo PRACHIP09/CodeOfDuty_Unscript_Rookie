@@ -182,7 +182,7 @@ const CourseLayout = () => {
                   arrow
                   title="Have one to one conversations with our teachers"
                 >
-                  <Link to="/chat" style={{ textDecoration: "none" }}>
+                  <Link to="/faqs" style={{ textDecoration: "none" }}>
                     <Button>
                       <QuestionAnswerIcon />
                     </Button>
