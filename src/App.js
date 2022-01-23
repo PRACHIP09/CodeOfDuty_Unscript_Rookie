@@ -13,6 +13,7 @@ import StudentProfile from "./Student/StudentProfile";
 import Chatbot from "./Extra/Chatbot";
 import DomainCourse from "./Student/StudentCourses/DomainCourse";
 import Verification from "./Accounts/Verification";
+import ForgotPassword from "./Accounts/ForgotPassword";
 function App() {
   return (
     <Router>
@@ -56,6 +57,9 @@ function App() {
           {/* <Route path={`/account/email-verify/:token`} component={Verification}/> */}
           <Route exact path="/account/email-verify/user-id=:token">
             <Verification />
+          </Route>
+          <Route exact path="/account/password-reset/:uidb64/:token/">
+            <ForgotPassword />
           </Route>
         </Switch>
       </div>

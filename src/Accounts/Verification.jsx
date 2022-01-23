@@ -23,6 +23,7 @@ export default function Verification() {
         axios(config)
             .then(function (response) {
                 console.log(JSON.stringify(response.data));
+                hist.push('/home');
             })
             .catch(function (error) {
                 console.log(error);
@@ -33,7 +34,7 @@ export default function Verification() {
     return (
         <center style={{ margin: '100px' }}>
             <h2>To verify your Email click on below button</h2>
-            <Button variant="contained" onClick={verify} component={Link} to='/home'>Verify</Button>
+            <Button variant="contained" onClick={verify} component={Link} >Verify</Button>
         </center>
     );
 };

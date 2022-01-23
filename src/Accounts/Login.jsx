@@ -328,6 +328,42 @@ const Login = () => {
                         variant="outlined"
                         fullWidth
                         style={{ marginBottom: "3vh" }}
+                        onClick={() => {
+                          Swal.fire({
+                            title: "Input your email ",
+                            input: "text",
+                            inputLabel: "Email",
+                            inputValidator: async (num) => {
+                              console.log(num);
+                              if (!num) {
+                                return "You need to write something!";
+                              } else if (num) {
+                                var FormData = require("form-data");
+                                var mail = new FormData();
+                                mail.append("email", num);
+                                var config2 = {
+                                  method: "post",
+                                  url: "http://b5da-1-22-101-132.ngrok.io/account/request-reset-email/",
+                                  data: mail,
+                                };
+                                axios(config2)
+                                  .then(function (response) {
+                                    console.log(JSON.stringify(response.data));
+                                    Swal.fire({
+                                      title: "We have sent a link to your mail",
+                                      icon: "success",
+                                    });
+                                  })
+                                  .catch((e) => {
+                                    Swal.fire({
+                                      title: "invalid",
+                                      icon: "error",
+                                    });
+                                  });
+                              }
+                            },
+                          });
+                        }}
                         component={motion.div}
                         whileHover={{
                           scale: 1.08,
@@ -596,33 +632,8 @@ const Login = () => {
                     }}
                     style={{ fontSize: "1.1rem" }}
                     onClick={(e) => {
+                      history.push("/admin");
                       console.log(errors);
-                      if (
-                        !errors.email &&
-                        !errors.name &&
-                        !errors.password &&
-                        !errors.password2
-                      ) {
-                        axios(config)
-                          .then(function (response) {
-                            console.log(JSON.stringify(response.data));
-                            history.push("/admin");
-                          })
-                          .catch(function (error) {
-                            console.log(error);
-                            Swal.fire({
-                              icon: "error",
-                              title: "Invalid",
-                              text: "Please try again ",
-                              showClass: {
-                                popup: "animate__animated animate__fadeInDown",
-                              },
-                              hideClass: {
-                                popup: "animate__animated animate__fadeOutUp",
-                              },
-                            });
-                          });
-                      }
                     }}
                   >
                     Submit
