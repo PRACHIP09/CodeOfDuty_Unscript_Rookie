@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@200&family=Libre+Baskerville&family=Mochiy+Pop+P+One&display=swap");
+
+.profileCard {
+  font-family: "Mochiy Pop P One", sans-serif;
+
+}
+
+.profileData {
+  font-family: "Libre Baskerville", serif;
+  font-size: 0.8rem;
+  padding: 5px;
+  text-align: left;
+}
+
+.profilePrice {
+  background-color: #ccf0bf;
+  padding: 6px;
+  font-family: "Libre Baskerville", serif;
+  text-align: left;
+  font-weight: 700;
+}
+
+.profileName{
+  font-family: "Mochiy Pop P One", sans-serif;
+  font-weight: 700;
+
+}

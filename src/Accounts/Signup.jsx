@@ -25,7 +25,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { motion } from "framer-motion";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import bulbs from "../Images/urban-941.png";
+import bulbs from "../Images/girl.png";
 import Swal from "sweetalert2";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -97,7 +97,7 @@ const Signup = () => {
         container
         component="main"
         sx={{ height: "100vh" }}
-        style={{ padding: "10px 50px" }}
+        style={{ padding: "10px 50px",backgroundColor:'#FAFAFA' }}
       >
         <CssBaseline />
         <Grid
@@ -113,7 +113,7 @@ const Signup = () => {
               t.palette.mode === "light"
                 ? t.palette.grey[50]
                 : t.palette.grey[900],
-            backgroundSize: "cover",
+            backgroundSize: "600px",
             backgroundPosition: "center",
           }}
         />
@@ -426,7 +426,7 @@ const Signup = () => {
                           to="/login"
                           style={{
                             textDecoration: "none",
-                            fontSize: "1rem",
+                            fontSize: ".8rem",
                             color: "blue",
                           }}
                         >
