@@ -144,6 +144,8 @@ const CourseLayout = () => {
                   onClick={(e) => {
                     setEnroll(true);
                     handleClose(e);
+
+                    
                     var config = {
                       method: "post",
                       url: "http://b5da-1-22-101-132.ngrok.io/course/student/2/",
@@ -157,10 +159,13 @@ const CourseLayout = () => {
                       console.log(JSON.stringify(response.data));
                       Swal.fire({
                         icon: "success",
-                        title: "Added to the cart",
+                        title: "Added to the list",
                       });
-                    });
-                    history.push("/profile").catch(function (error) {
+                    })
+
+
+                    // history.push("/profile");
+                    .catch(function (error) {
                       console.log(error);
                     });
                   }}

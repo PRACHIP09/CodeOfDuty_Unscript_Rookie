@@ -34,7 +34,7 @@ const Hero = () => {
         <span className="heroFeature">7 days Trial</span>
         <span className="heroFeature2">Free for teachers</span>
         <br />
-        <Link to="/studentCourses" className="LinkTag">
+        <Link to="/courses" className="LinkTag">
           <Button
             size="large"
             variant="contained"

@@ -14,7 +14,7 @@ export default function Verification() {
 
         var config = {
             method: 'get',
-            url: '127.0.0.1:8000/account/email-verify/',
+            url: 'http://b5da-1-22-101-132.ngrok.io/account/email-verify/',
             headers: {
                 'Authorization': 'Bearer ' + old_token
             }

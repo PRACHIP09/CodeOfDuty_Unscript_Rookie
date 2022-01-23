@@ -20,9 +20,10 @@ import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import axios from "axios";
 import Faqs from './Faqs';
 import "../Teacher/teacher.css";
-import Cart from "./Cart";
+// import Cart from "./Cart";
 import "./Profile.css";
 var i = 0;
+var sum=0;
 const StudentProfile = () => {
   const [load, setLoad] = useState([]);
   const [temp, setTemp] = useState([]);
@@ -61,14 +62,12 @@ const StudentProfile = () => {
         style={{
           fontWeight: "700",
           fontSize: "1.7rem",
-          padding:'5px',
+          padding: "5px",
           alignItems: "Left",
         }}
       >
         <br />
-        <div
-         className="profileName"
-        >
+        <div className="profileName">
           <h1>Profile</h1>
         </div>
       </div>
@@ -77,7 +76,7 @@ const StudentProfile = () => {
         spacing={3}
         style={{ paddingLeft: "2vh", paddingRight: "2vh", paddingTop: "2vh" }}
       >
-        <Grid item xs={12} sm={8}>
+        <Grid item xs={12} sm={12}>
           <div
             className="heading"
             style={{
@@ -153,21 +152,23 @@ const StudentProfile = () => {
           </Grid>
         </Grid>
 
-        <Grid item xs={12} sm={4}>
+        {/* <Grid item xs={12} sm={4}>
           <div
             className="heading"
             style={{
               padding: "3vh",
               fontWeight: "700",
               fontSize: "1.7rem",
-              color: "#00ACEA",
               alignItems: "Left",
             }}
           >
             <u>Payment Gateway</u>
+            <br />
           </div>
-          <Cart />
-        </Grid>
+          Number of items: {uniques.length}
+          Total prize= $ {uniques.price}
+          {/* <Cart /> */}
+        {/* </Grid> */} 
       </Grid>
     </div>
   );
