@@ -17,6 +17,7 @@ import DomainCourse from "./Student/StudentCourses/DomainCourse";
 import Verification from "./Accounts/Verification";
 import ForgotPassword from "./Accounts/ForgotPassword";
 import axios from 'axios'
+import Faqs from "./Student/Faqs";
 function App() {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
@@ -149,6 +150,9 @@ function App() {
           </Route>
           <Route path="/chat">
             <Chatbot />
+          </Route>
+          <Route path="/faqs">
+            <Faqs/>
           </Route>
           {/* <Route path={`/account/email-verify/:token`} component={Verification}/> */}
           <Route exact path="/account/email-verify/user-id=:token">

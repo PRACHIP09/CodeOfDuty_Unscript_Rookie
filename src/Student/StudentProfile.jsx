@@ -13,10 +13,12 @@ import doubts from "../Images/doubts.png";
 import feedback from "../Images/feedback.png";
 import PeopleIcon from "@mui/icons-material/People";
 import blog from "../Images/blog.jpg";
+import {Link} from 'react-router-dom';
 import link from "../Images/link.png";
 import { motion } from "framer-motion";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import axios from "axios";
+import Faqs from './Faqs';
 import "../Teacher/teacher.css";
 // import Cart from "./Cart";
 import "./Profile.css";
@@ -108,6 +110,7 @@ const StudentProfile = () => {
                   <CardContent>
                     <Grid container spacing={3}>
                       <Grid items md={3} xs={3}>
+                      <Link to="/faqs">
                         <img
                           src={link}
                           alt={link}
@@ -118,7 +121,8 @@ const StudentProfile = () => {
                             padding: "3px",
                             margin: "5px",
                           }}
-                        />
+                          
+                        ></img></Link>
                       </Grid>
                     </Grid>
                   </CardContent>

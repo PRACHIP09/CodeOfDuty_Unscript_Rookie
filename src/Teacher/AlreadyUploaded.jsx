@@ -19,20 +19,7 @@ const AlreadyUploaded = () => {
       }
     );
     console.log(result.data);
-    if(result.data.length==0)
-    {
-      Swal.fire({
-        icon: "error",
-        title: "Oops",
-        text: "No reviews visible",
-        showClass: {
-          popup: "animate__animated animate__fadeInDown",
-        },
-        hideClass: {
-          popup: "animate__animated animate__fadeOutUp",
-        },
-      });
-    }
+    
     setLoad(result.data);
   };
   return (
