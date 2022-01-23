@@ -8,6 +8,8 @@ import {
   Drawer,
   Button,
   Tooltip,
+  Box,
+  CircularProgress
 } from "@mui/material";
 import doubts from "../Images/doubts.png";
 import feedback from "../Images/feedback.png";
@@ -26,6 +28,7 @@ var i = 0;
 var sum=0;
 const StudentProfile = () => {
   const [load, setLoad] = useState([]);
+  const [loading , setLoadinng] = useState(false);
   const [temp, setTemp] = useState([]);
   useEffect(() => {
     loadList();
@@ -40,6 +43,7 @@ const StudentProfile = () => {
       }
     );
     console.log(result.data);
+    setLoadinng(true)
     setLoad(result.data);
     for (i = 0; i < result.data.length; i++) {
       console.log(result.data[i].item);
@@ -57,6 +61,7 @@ const StudentProfile = () => {
   console.log(uniques);
   return (
     <div>
+      {loading ? (<>
       <div
         className="heading"
         style={{
@@ -170,6 +175,11 @@ const StudentProfile = () => {
           {/* <Cart /> */}
         {/* </Grid> */} 
       </Grid>
+      </>):(<Box style={{padding:"5vh"}}>
+      <CircularProgress />
+      <div style={{padding:"5vh" , fontSize:"1.5rem" , fontWeight:"700"}}>Loading</div>
+         
+    </Box>)}
     </div>
   );
 };

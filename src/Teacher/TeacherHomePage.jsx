@@ -6,6 +6,8 @@ import { Grid ,
     CardContent,
     Drawer,
     Button, 
+    Box,
+    CircularProgress,
     Tooltip} from '@mui/material';
 import doubts from '../Images/doubts.png';
 import feedback from '../Images/feedback.png';
@@ -19,6 +21,7 @@ import Doubts from './Doubts';
 import { motion } from "framer-motion";
 import axios from 'axios';
 import './teacher.css';
+import loading from '../Images/loading.png'
 const TeacherHomePage = () => {
     const [open, setOpen] = React.useState(false);
     const [openqa, setOpenqa] = React.useState(false);
@@ -65,11 +68,14 @@ const TeacherHomePage = () => {
         }
       );
       console.log(result.data);
+      setLoading(true);
       setLoad(result.data);
     };
     
   return (
   <div style={{padding:"6vh"}} >
+    {loading ? (
+      <>
         <Grid container spacing={3} >
         <Grid md={10} xs={10}></Grid>
         <Grid md={2} xs={2}
@@ -175,7 +181,14 @@ const TeacherHomePage = () => {
        <img src={close} alt="close" onClick={handleDrawerCloseFdbck} style={{height:"5vh", width:"5vh" , cursor:"pointer" , marginLeft:"80%" , marginTop:"2vh"}}/>
        <AlreadyUploaded/> 
       </Drawer>
-      
+      </>
+    ):(
+      <Box style={{padding:"5vh"}}>
+      <CircularProgress />
+      <div style={{padding:"5vh" , fontSize:"1.5rem" , fontWeight:"700"}}>Loading</div>
+         
+    </Box>
+    )}
   </div>
   )
 };

@@ -1,11 +1,15 @@
 import React,{useEffect,useState} from 'react';
 import axios from 'axios';
 import {
-  Grid,Table,TableCell,TableRow,TableBody,TableContainer,TableHead} from '@mui/material';
+  Grid,Table,TableCell,TableRow,TableBody,TableContainer,TableHead,Box,
+  CircularProgress,} from '@mui/material';
 import Swal from "sweetalert2";
+import loading from '../Images/loading.png'
+
 const AlreadyUploaded = () => {
   const id = localStorage.getItem("id");
   const [load,setLoad] = useState([]);
+  const [loading,setLoading] = useState(false);
    useEffect(() => {
      loadList();
    }, []);
@@ -19,11 +23,13 @@ const AlreadyUploaded = () => {
       }
     );
     console.log(result.data);
-    
+    setLoading(true);
     setLoad(result.data);
   };
   return (
   <div>
+        {loading ? (
+      <>
       <div style={{fontSize:"1.2rem" , fontWeight:"600",marginTop:"5vh"}}>
       <TableContainer>
       <Table sx={12} size="small" aria-label="a dense table">
@@ -51,6 +57,14 @@ const AlreadyUploaded = () => {
       <Grid conatiner spacing={3} >
       
       </Grid>
+      </>
+      ):(
+        <Box>
+        <CircularProgress />
+        <img src={loading} alt="load"  style={{height:"30vh", width:"30vh" , cursor:"pointer" , margin:"5vh"}}/>
+           
+      </Box>
+        )}
   </div>
   );
 };
