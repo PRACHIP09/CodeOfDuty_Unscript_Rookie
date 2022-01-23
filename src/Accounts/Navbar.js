@@ -156,7 +156,7 @@ const Navbar = () => {
             alignContent="center"
           >
             {pages.map((page) => (
-              <Link to={page} style={{textDecoration:'none'}}>
+              <Link to={'/'+page}  style={{textDecoration:'none'}}>
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
