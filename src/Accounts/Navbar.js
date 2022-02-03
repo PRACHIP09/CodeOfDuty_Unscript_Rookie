@@ -13,7 +13,7 @@ import ListItemText from "@mui/material/ListItemText";
 // import { Link } from "react-scroll";
 const pages = [
   "Login",
-  "Signin",
+  "Signup",
   "Home",
   "Profile",
   "Contactus",

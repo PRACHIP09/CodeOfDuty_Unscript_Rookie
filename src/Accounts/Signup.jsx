@@ -131,7 +131,7 @@ const Signup = () => {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Sign up
             </Typography>
 
             <Formik
@@ -406,7 +406,7 @@ const Signup = () => {
                       }
                     }}
                   >
-                    Sign In
+                    Sign Up
                   </Button>
                   <Grid container>
                     <Grid item xs={12} md={12}>

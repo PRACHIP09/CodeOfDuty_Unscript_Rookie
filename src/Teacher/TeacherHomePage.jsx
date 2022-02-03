@@ -82,8 +82,8 @@ const TeacherHomePage = () => {
         <img src={add} alt="add" onClick={handleDrawerOpen} style={{height:"6vh", width:"6vh" , cursor:"pointer" }}/>
         </Grid>
         </Grid>
-        <div className="heading" style={{padding:"3vh" , fontWeight:"700" , fontSize:"1.7rem" , color:"#00ACEA" , alignItems:"Left"}}>
-        <u>Course Uploaded</u><br/><div style={{padding:"3vh" , fontWeight:"700" , fontSize:"1.5rem" , color:"#00ACEA" , alignItems:"Left"}}><i>"In learning you will teach and in teaching you will learn"</i></div>
+        <div className="heading" style={{padding:"3vh" , fontWeight:"700" , fontSize:"1.7rem" , alignItems:"Left"}}>
+        <u>Course Uploaded</u><br/><div style={{padding:"3vh" , fontWeight:"700" , fontSize:"1.5rem", alignItems:"Left"}}></div>
         </div>
         <Grid container spacing={3} >
          {load.map((index)=>(
@@ -91,6 +91,7 @@ const TeacherHomePage = () => {
         <Grid item md={3} xs={12} sm={6}>
             <Card
             component={motion.div}
+            style={{height:'500px'}}
             whileHover={{
             scale: 1.08,
             textShadow: "0 0 8px rgb(255,255,255)",
@@ -104,7 +105,7 @@ const TeacherHomePage = () => {
               src={blog}
               style={{marginBottom:"3vh"}}
             />
-            <Typography gutterBottom variant="h5" component="div" style={{marginBottom:"2vh" , color:"blue" , fontWeight:"600"}}>{index.name} &ensp; - &ensp; {index.level}</Typography>
+            <Typography gutterBottom variant="h5" component="div" style={{marginBottom:"2vh", fontWeight:"600",fontFamily:'monospace'}}>{index.name}</Typography>
             <Typography gutterBottom  component="div" style={{padding:"2vh",height:"4vh"}}>{index.category}</Typography>
             <hr/><br/>
             <CardContent>

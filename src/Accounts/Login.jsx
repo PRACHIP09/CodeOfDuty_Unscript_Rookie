@@ -150,12 +150,12 @@ const Login = () => {
                 const errors = {};
 
                 if (!values.password) {
-                  errors.password = "Password is required";
-                } else if (values.password.length < 8) {
-                  errors.password = "Password is too short";
-                } else if (!passwordRegex.test(values.password)) {
-                  errors.password = "Password is not strong enough";
-                }
+                  errors.password = "Password is required";}
+                // } else if (values.password.length < 8) {
+                //   errors.password = "Password is too short";
+                // } else if (!passwordRegex.test(values.password)) {
+                //   errors.password = "Password is not strong enough";
+                // }
 
                 if (!values.email) {
                   errors.email = "Email is required";

@@ -351,7 +351,7 @@ const Admin = () => {
                     <DialogContent>
                       <DialogContentText>
                         <img
-                          src={`http://127.0.0.1:8000${x.adhaar_photo}`}
+                          src={`http://b5da-1-22-101-132.ngrok.io${x.adhaar_photo}`}
                         ></img>
                       </DialogContentText>
                     </DialogContent>

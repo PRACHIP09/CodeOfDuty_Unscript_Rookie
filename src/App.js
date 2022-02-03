@@ -17,6 +17,7 @@ import DomainCourse from "./Student/StudentCourses/DomainCourse";
 import Verification from "./Accounts/Verification";
 import ForgotPassword from "./Accounts/ForgotPassword";
 import axios from 'axios'
+import Faqs from "./Student/Faqs";
 function App() {
  
   return (
@@ -55,8 +56,8 @@ function App() {
             <Navbar />
             <ContactUs />
           </Route>
-          <Route path="/chat">
-            <Chatbot />
+          <Route path="/faqs">
+            <Faqs />
           </Route>
           {/* <Route path={`/account/email-verify/:token`} component={Verification}/> */}
           <Route exact path="/account/email-verify/user-id=:token">

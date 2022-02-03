@@ -73,7 +73,7 @@ const CourseLayout = () => {
       });
   }, []);
 
-  var server = "http://946a-123-136-149-198.ngrok.io";
+  var server = "http://99a2-123-136-149-198.ngrok.io";
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const handlePaymentSuccess = async (response) => {
@@ -139,8 +139,8 @@ const CourseLayout = () => {
     //that has been made by the user
 
     var options = {
-      key_id:'rzp_test_xYK7UXjbnGTg0I',
-      key_secret:'UKXOzDkhqQsW4kN18XM472Tn',
+      key_id:'rzp_test_REGgY1LKDKCdw0 ',
+      key_secret:' rr4nFSh56sa3PqxioTcXHMg0',
       amount: data.data.payment.amount,
       currency: "INR",
       name: "Org. Name",
