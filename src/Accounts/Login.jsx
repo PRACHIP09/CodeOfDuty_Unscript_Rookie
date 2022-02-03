@@ -645,8 +645,6 @@ const Login = () => {
             </Formik>
           </Box>
         </Grid>
-
-        {/* <CourseToUpload id={user.id}/>  */}
       </Drawer>
     </ThemeProvider>
   );

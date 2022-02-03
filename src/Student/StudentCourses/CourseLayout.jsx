@@ -6,6 +6,8 @@ import {
   Drawer,
   TextField,
   InputAdornment,
+  Box,
+  CircularProgress,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import CategoryTable from "./CategoryTable";
@@ -22,10 +24,12 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
+
 var difficult = "hard";
 const CourseLayout = () => {
   const [enroll, setEnroll] = useState(false);
   const [open, setOpen] = React.useState(false);
+  const [loading,setLoading] = useState(false);
   const history = useHistory();
   // move page to top
   const onTop = () => {
@@ -67,6 +71,7 @@ const CourseLayout = () => {
       .then(function (response) {
         console.log(JSON.stringify(response.data));
         setData(response.data);
+        setLoading(true)
       })
       .catch(function (error) {
         console.log(error);
@@ -170,6 +175,8 @@ const CourseLayout = () => {
   };
   return (
     <div>
+      {loading ? (
+        <>
       <CategoryTable />
       <center>
         <Grid container spacing={3} style={{ padding: "1% 4%" }}>
@@ -510,6 +517,14 @@ const CourseLayout = () => {
           </div>
         </Drawer>
       </center>
+      </>):(
+        <Box style={{padding:"5vh"}}>
+        <CircularProgress />
+        <div style={{padding:"5vh" , fontSize:"1.5rem" , fontWeight:"700"}}>Loading</div>
+           
+      </Box>
+      )
+      }
     </div>
   );
 };
